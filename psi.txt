@@ -1,0 +1,13 @@
+prioridade		Narartiva							criterio de aceitação
+1 - como padeiro ou confeiteiro,						
+Eu quero visualizar a produção diaria por tipo de massa,     ----        1 eu posso pesquisar com base na massa, para 		para que o padeiro ou confeiteiro possa ve a sua produção 		  padeiro ou para confeiteiro.
+do dia.									 2 Eu posso pesquisar com base em palavra de um  									 		   	titulo
+
+2 - como Padeiro ou Confeiteiro, 					 1 - eu posso cadastrar, editar a produção diaria, Quero cadastrar, editar, as produções feita diariamente		          a data de fabricação,quantidade, qual massa,     
+para que o controle da produção em dia e a venda estejam atualizados. --  para o produto estar a venda.	
+
+
+3 - como Padeiro ou confeiteiro, 					  1. eu posso pesquisar as receitas por tipo de 
+quero visualizar as receitas feitas por padeiros ou		             massa de padaria ou confeitaria.		 
+confeiteiros, para que novos funcionarios possam ve o 			  2. posso pesquisar com base em palavra de 	
+padrao que e feito os produtos.						     um titulo	
