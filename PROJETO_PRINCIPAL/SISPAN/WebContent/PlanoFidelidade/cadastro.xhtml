@@ -1,0 +1,51 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:decorate template="/tema/padrao.xhtml">
+	<ui:define name="centro">
+		<h:form id="cadastro">
+			<p:panel header="Formulario de cadastro">
+				<h:panelGrid columns="2">
+					<h:panelGrid columns="1">
+						<p:outputLabel value="Nome do plano" />
+						<p:inputText
+							value="#{planoFidelidadeMB.planoFidelidade.nomePlano}"
+							required="true" />
+					</h:panelGrid>
+					<h:panelGrid columns="3">
+						<p:outputLabel value="" />
+						<p:outputLabel value="Valor em compras R$" />
+						<p:outputLabel value="Valor em pontos" />
+						<p:outputLabel value="Conversão de pontos" />
+						<p:spinner
+							value="#{planoFidelidadeMB.planoFidelidade.valorAplicavel}"  />
+						<p:inputText
+							value="#{planoFidelidadeMB.planoFidelidade.pontoAplicavel}" />
+					</h:panelGrid>
+					<p:panel header="Metas, upgrades e downgrades">
+						<h:panelGrid columns="1">
+							<h:panelGrid columns="2">
+								<p:outputLabel value="Meta por periodo(Pontos)" />
+								<p:outputLabel value="Periodo/Meta" />
+								<p:spinner
+									value="#{planoFidelidadeMB.planoFidelidade.metaPontos}" min="0"
+									required="true" />
+								<p:spinner
+									value="#{planoFidelidadeMB.planoFidelidade.metaPeriodo}"
+									min="0" required="true" />
+							</h:panelGrid>
+						</h:panelGrid>
+					</p:panel>
+					<p:panel header="Premiações">
+						<p:panelGrid>
+						</p:panelGrid>
+					</p:panel>
+					<p:commandButton action="#{planoFidelidadeMB.salvar()}"
+						value="Salvar" update="cadastro" />
+				</h:panelGrid>
+			</p:panel>
+		</h:form>
+	</ui:define>
+</ui:decorate>
+</html>
