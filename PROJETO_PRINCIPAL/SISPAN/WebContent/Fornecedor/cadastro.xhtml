@@ -1,0 +1,18 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:decorate template="/tema/padrao.xhtml">
+	<ui:define name="centro">
+		<h:form id="cadastro">
+			<p:panel header="Formulario de cadastro">
+				<h:panelGrid columns="1">
+					<p:outputLabel value="CNPJ" /><p:inputText value="#{fornecedorMB.fornecedor.CNPJ}" required="true" />
+					<p:outputLabel value="Nome Fantasia" /><p:inputText value="#{fornecedorMB.fornecedor.nome_fantasia}" required="true" />
+					<p:commandButton action="#{fornecedorMB.salvar()}" value="Salvar" update="cadastro" />
+				</h:panelGrid>
+			</p:panel>
+		</h:form>
+	</ui:define>
+</ui:decorate>
+</html>
