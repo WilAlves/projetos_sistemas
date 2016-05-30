@@ -6,4 +6,6 @@ public interface Bean extends Serializable {
 	
 	public Long getId();
 
+	
+
 }

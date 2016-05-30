@@ -1,6 +1,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
+<<<<<<< ec6e90cc22719936207bc2d576b2df7d9046ef77
 	xmlns:f="http://java.sun.com/jsf/core"
+=======
+>>>>>>> Produto inserir
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <ui:decorate template="/tema/padrao.xhtml">
@@ -8,6 +11,7 @@
 		<h:form id="cadastro">
 			<p:panel header="Formulario de cadastro">
 				<h:panelGrid columns="1">
+<<<<<<< ec6e90cc22719936207bc2d576b2df7d9046ef77
 					<p:outputLabel value="Código" for="id" redered="#{produtoMB.produto.id != null}" />
 						<p:inputText id="id" value="#{produtoMB.produto.id}" redered="#{produtoMB.produto.id != null}" readonly="true" />
 					<p:outputLabel value="Descrição" />
@@ -17,10 +21,17 @@
 					<p:outputLabel value="Quantidade" />
 						<p:inputText value="#{produtoMB.produto.quantidade}" required="true" />
 					<p:commandButton action="#{produtoMB.salvar()}" value="Salvar" update="cadastro lista" />
+=======
+					<p:outputLabel value="Descrição" /><p:inputText value="#{produtoMB.produto.descricao}" required="true" />
+					<p:outputLabel value="Valor Unitario" /><p:inputText value="#{produtoMB.produto.valor}" required="true" />
+					<p:outputLabel value="Quantidade" /><p:inputText value="#{produtoMB.produto.quantidade}" required="true" />
+					<p:commandButton action="#{produtoMB.salvar()}" value="Salvar" update="cadastro" />
+>>>>>>> Produto inserir
 				</h:panelGrid>
 			</p:panel>
 		</h:form>
 	</ui:define>
+<<<<<<< ec6e90cc22719936207bc2d576b2df7d9046ef77
 	<ui:define name="footer">
 		<h:form id="lista">
 			<p:dataTable value="#{produtoMB.listaProdutos}" var="plano"	selectionMode="single" selection="#{produtoMB.produto}" rowKey="#{plano}">
@@ -37,5 +48,7 @@
 			</p:dataTable>
 		</h:form>
 	</ui:define>
+=======
+>>>>>>> Produto inserir
 </ui:decorate>
 </html>
