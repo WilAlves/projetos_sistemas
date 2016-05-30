@@ -6,14 +6,15 @@
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<class>br.com.sispan.model.Usuario</class>
 		<class>br.com.sispan.model.PlanoFidelidade</class>
+		<class>br.com.sispan.model.Produto</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
-			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://172.16.250.128/sispan" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://127.0.0.1/sispan" />
 			<!--  <property name="javax.persistence.jdbc.url" value="jdbc:mysql://192.167.56.1/sispan" /> -->
-			<property name="javax.persistence.jdbc.user" value="sispan" />
-			<property name="javax.persistence.jdbc.password" value="sispan" />
+			<property name="javax.persistence.jdbc.user" value="root" />
+			<property name="javax.persistence.jdbc.password" value="123456" />
 
-			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.hbm2ddl.auto" value="create" />
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
 
