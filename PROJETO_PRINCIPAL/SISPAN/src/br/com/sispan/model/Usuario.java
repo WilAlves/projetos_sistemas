@@ -20,15 +20,61 @@ public class Usuario implements Bean {
 	@GeneratedValue
 	@Column(name="id_usuario")
 	private Long id;
-	@Column(name="nome_usuario")
-	private String nomeUsuario;
+	
+	@Column(name="login_usuario")
+	private String loginUsuario;
+	
 	@Column(name="senha_usuario")
 	private String senhaUsuario;
 	
-	@Override
+	@Column(name="Nome_usuario")
+	private String nomeUsuario;
+	
+	@Column(name="cep_usuario")
+	private String cepUsuario;
+	
+	@Column(name="endereco_usuario")
+	private String enderecoUsuario;
+	
+	@Column(name="fone_usuario")
+	private String foneUsuario;
+	
+	@Column(name="cpf_usuario")
+	private String cpfUsuario;
+	
+	@Column(name="dataNascimento_usuario")
+	private String dataNascimentoUsuario;
+
 	public Long getId() {
-		// TODO Auto-generated method stub
 		return id;
+	}
+
+	public String getDataNascimentoUsuario() {
+		return dataNascimentoUsuario;
+	}
+
+	public void setDataNascimentoUsuario(String dataNascimentoUsuario) {
+		this.dataNascimentoUsuario = dataNascimentoUsuario;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getLoginUsuario() {
+		return loginUsuario;
+	}
+
+	public void setLoginUsuario(String loginUsuario) {
+		this.loginUsuario = loginUsuario;
+	}
+
+	public String getSenhaUsuario() {
+		return senhaUsuario;
+	}
+
+	public void setSenhaUsuario(String senhaUsuario) {
+		this.senhaUsuario = senhaUsuario;
 	}
 
 	public String getNomeUsuario() {
@@ -39,13 +85,41 @@ public class Usuario implements Bean {
 		this.nomeUsuario = nomeUsuario;
 	}
 
-	public String getSenhaUsuario() {
-		return senhaUsuario;
+	public String getCepUsuario() {
+		return cepUsuario;
 	}
 
-	public void setSenhaUsuario(String senhaUsuario) {
-		this.senhaUsuario = senhaUsuario;
+	public void setCepUsuario(String cepUsuario) {
+		this.cepUsuario = cepUsuario;
+	}
+
+	public String getEnderecoUsuario() {
+		return enderecoUsuario;
+	}
+
+	public void setEnderecoUsuario(String enderecoUsuario) {
+		this.enderecoUsuario = enderecoUsuario;
+	}
+
+	public String getFoneUsuario() {
+		return foneUsuario;
+	}
+
+	public void setFoneUsuario(String foneUsuario) {
+		this.foneUsuario = foneUsuario;
+	}
+
+	public String getCpfUsuario() {
+		return cpfUsuario;
+	}
+
+	public void setCpfUsuario(String cpfUsuario) {
+		this.cpfUsuario = cpfUsuario;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 	
-	
+		
 }

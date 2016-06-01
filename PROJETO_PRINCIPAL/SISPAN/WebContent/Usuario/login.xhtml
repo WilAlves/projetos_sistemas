@@ -8,11 +8,11 @@
         <fieldset>
         <legend>LOGIN</legend>
           <p:panelGrid columns="2">
-          	<p:outputLabel value="Nome de usuário" />
-          	<p:inputText value="#{usuarioMB.usuario.nomeUsuario}" />
+          	<p:outputLabel value="Login do usuário" />
+          	<p:inputText value="#{usuarioMB.usuario.loginUsuario}" />
           	<p:outputLabel value="Senha do usuário" />
           	<p:password value="#{usuarioMB.usuario.senhaUsuario}" />
-          	<p:commandButton action="#{usuarioMB.logar()}" value="Acessar" />
+          	<p:commandButton action="#{usuarioMB.login()}" value="Acessar" />
           </p:panelGrid>
           </fieldset>
         </h:form>

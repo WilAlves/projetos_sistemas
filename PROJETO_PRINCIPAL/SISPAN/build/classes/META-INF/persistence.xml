@@ -4,16 +4,18 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	<persistence-unit name="SISPAN" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
-		<class>br.com.sispan.model.Usuario</class>
 		<class>br.com.sispan.model.PlanoFidelidade</class>
 		<class>br.com.sispan.model.Produto</class>
 		<class>br.com.sispan.model.Fornecedor</class>
+		<class>br.com.sispan.model.Usuario</class>
+		<class>br.com.sispan.model.Funcionario</class>
+		<class>br.com.sispan.model.Cliente</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://127.0.0.1/sispan" />
 			<!--  <property name="javax.persistence.jdbc.url" value="jdbc:mysql://192.167.56.1/sispan" /> -->
 			<property name="javax.persistence.jdbc.user" value="root" />
-			<property name="javax.persistence.jdbc.password" value="123456" />
+			<property name="javax.persistence.jdbc.password" value="maia0603" />
 
 			<property name="hibernate.hbm2ddl.auto" value="create" />
 			<property name="hibernate.show_sql" value="true" />

@@ -1,0 +1,34 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <ui:decorate template="/tema/padrao.xhtml">
+        <ui:define name="centro">
+        <h:form>
+        <fieldset>
+        <legend>Cadastro de Funcionarios</legend>
+        	
+        	<p:panelGrid columns="2">
+        	        	
+        	<p:outputLabel value="Matricula" />
+          	<p:inputText value="#{funcionarioMB.funcionario.matriculaFuncionario}" />
+        	
+          	<p:outputLabel value="Cargo" />
+          	<p:inputText value="#{funcionarioMB.funcionario.cargoFuncionario}" />
+          	
+          	<p:outputLabel value="CTPS" />
+          	<p:inputText value="#{funcionarioMB.funcionario.ctpsFuncionario}" />
+          	
+          	<p:outputLabel value="RG" />
+          	<p:inputText value="#{funcionarioMB.funcionario.rgFuncionario}" />
+          	     	
+          	
+        </p:panelGrid>
+        
+        	<p:commandButton action="#{funcionarioMB.salvar}" value="Salvar" update="@this" />
+        
+   </fieldset>
+        </h:form>
+        </ui:define>
+    </ui:decorate>
+</html>

@@ -1,0 +1,54 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <ui:decorate template="/tema/padrao.xhtml">
+        <ui:define name="centro">
+        <h:form id="dados">
+        <fieldset>
+        <legend>Cadastro de Usuario</legend>
+          <p:panelGrid columns="4">
+          
+          	
+          		<p:outputLabel value="Login (e-mail)" />
+          		<p:inputText value="#{usuarioMB.usuario.loginUsuario}" />
+          	
+          		<p:outputLabel value="Senha" />
+          		<p:password value="#{usuarioMB.usuario.senhaUsuario}" />
+          	
+          		<p:outputLabel value="Nome" />
+          		<p:inputText value="#{usuarioMB.usuario.nomeUsuario}" />
+          	
+	          	<p:outputLabel value="CEP" />
+	          	<p:inputText value="#{usuarioMB.usuario.cepUsuario}" />
+	          	
+	          	<p:outputLabel value="Endereço" />
+	          	<p:inputText value="#{usuarioMB.usuario.enderecoUsuario}" />
+	          	
+	          	<p:outputLabel value="Telefone" />
+	          	<p:inputText value="#{usuarioMB.usuario.foneUsuario}" />
+	          	
+	          	<p:outputLabel value="CPF" />
+	          	<p:inputText value="#{usuarioMB.usuario.cpfUsuario}" />
+	          	
+	          	<p:outputLabel value="Data de Nascimento" />
+	          	<p:inputText value="#{usuarioMB.usuario.dataNascimentoUsuario}" />         		
+          	
+          </p:panelGrid>
+          
+          	
+        </fieldset>
+          
+			<p:panelGrid columns="4">
+          
+          		<p:commandButton action="#{usuarioMB.salvar}" value="Salvar" update="@this" />
+          
+          	</p:panelGrid>
+			
+          
+        </h:form>
+        
+                          
+        </ui:define>
+    </ui:decorate>
+</html>
