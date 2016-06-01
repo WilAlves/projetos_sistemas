@@ -1,16 +1,21 @@
 package br.com.sispan.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
 import br.com.sispan.interfaces.Bean;
 import br.com.sispan.model.Fornecedor;
+import br.com.sispan.model.PlanoFidelidade;
 
 @RequestScoped
 @ManagedBean
 public class FornecedorMB extends GenericMB {
 
 	private Fornecedor fornecedor = new Fornecedor();
+	private List<Fornecedor> listaFornecedores = new ArrayList();
 		
 	public Fornecedor getFornecedor() {
 		return fornecedor;
@@ -28,6 +33,21 @@ public class FornecedorMB extends GenericMB {
 	@Override
 	protected void setBean(Bean b) {
 		setFornecedor((Fornecedor) b);
+	}
+	
+	@Override
+	public void setLista(List lista) {
+		System.out.println("setando lista: ");
+		this.listaFornecedores = new ArrayList<Fornecedor>(lista);
+	}
+	
+		
+	public List<Fornecedor> getListaFornecedores() {
+		return listaFornecedores;
+	}
+
+	public void setListaFornecedores(List<Fornecedor> listaFornecedores) {
+		this.listaFornecedores = listaFornecedores;
 	}
 
 }

@@ -1,5 +1,7 @@
 package br.com.sispan.controller;
 
+import java.util.List;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
@@ -39,4 +41,10 @@ public class UsuarioMB extends GenericMB {
 	protected void setBean(Bean b) { // TODO Auto-generated method
 		this.setUsuario((Usuario) b);
 	}
+
+	@Override
+	public void setLista(List<Bean> lista) {
+		
+	}
+	
 }

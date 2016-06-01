@@ -9,7 +9,7 @@ import javax.persistence.Table;
 import br.com.sispan.interfaces.Bean;
 
 @Entity
-@Table
+@Table 
 public class PlanoFidelidade implements Bean {
 
 	/**
@@ -34,7 +34,7 @@ public class PlanoFidelidade implements Bean {
 	private Integer metaUpgrade = -1;
 	@Column(name = "meta_upgrade_pontos", precision = 0, nullable = false)
 	private Integer metaUpgradePontos = -1;
-	@Column(name = "meta_downgrade", precision = 0, nullable = false)
+	@Column(name = "meta_downgrade", precision = 0, nullable = true)
 	private Integer metaDowngrade = null;
 
 	@Override

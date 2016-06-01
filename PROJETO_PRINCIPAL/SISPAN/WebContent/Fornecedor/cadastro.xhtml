@@ -1,5 +1,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <ui:decorate template="/tema/padrao.xhtml">
@@ -12,6 +13,32 @@
 					<p:commandButton action="#{fornecedorMB.salvar()}" value="Salvar" update="cadastro" />
 				</h:panelGrid>
 			</p:panel>
+		</h:form>
+	</ui:define>
+	<ui:define name="footer">
+		<h:form id="lista">
+			<p:dataTable value="#{fornecedorMB.listaFornecedores}" var="plano"
+				selectionMode="single"
+				selection="#{fornecedorMB.fornecedor}" rowKey="#{plano}">
+				<p:ajax event="rowSelect" update="cadastro" />
+				<p:column headerText="Nome plano">
+					<h:outputText value="#{plano.CNPJ}" />
+				</p:column>
+				<p:column headerText="Meta">
+					<h:outputText value="#{plano.nome_fantasia}" />
+				</p:column>
+				<p:column style="width:32px;text-align: center">
+					<p:commandButton update="lista"
+					  icon="ui-icon-search"
+						title="View"
+						action="#{fornecedorMB.excluir()}"
+						>
+						<f:setPropertyActionListener value="#{plano}"
+							target="#{fornecedorMB.fornecedor}" 
+							/>
+					</p:commandButton>
+				</p:column>
+			</p:dataTable>
 		</h:form>
 	</ui:define>
 </ui:decorate>

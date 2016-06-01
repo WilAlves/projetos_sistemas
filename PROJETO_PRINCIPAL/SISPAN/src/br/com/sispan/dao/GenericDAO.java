@@ -9,7 +9,7 @@ import br.com.sispan.interfaces.Bean;
 
 public class GenericDAO {
 	
-	private EntityManager entityManager;
+	protected EntityManager entityManager;
 	
 	public  GenericDAO(EntityManager entityManager){
 		this.entityManager = entityManager;
@@ -33,7 +33,7 @@ public class GenericDAO {
 		entityManager.remove(model);		
 	}
 	
-	public List<Bean> listar(String query){
+	public List  listar(String query){
 		Query cursor = entityManager.createQuery(query);
 		return cursor.getResultList();
 	}

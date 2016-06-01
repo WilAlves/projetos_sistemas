@@ -1,5 +1,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <ui:decorate template="/tema/padrao.xhtml">
@@ -7,8 +8,14 @@
 		<h:form id="cadastro">
 			<p:panel header="Formulario de cadastro">
 				<h:panelGrid columns="2">
-					<h:panelGrid columns="1">
+					<h:panelGrid columns="2">
+						<p:outputLabel value="Código" for="id"
+							redered="#{planoFidelidadeMB.planoFidelidade.id != null}" />
 						<p:outputLabel value="Nome do plano" />
+						<p:inputText id="id"
+							value="#{planoFidelidadeMB.planoFidelidade.id}"
+							redered="#{planoFidelidadeMB.planoFidelidade.id != null}"
+							readonly="true" />
 						<p:inputText
 							value="#{planoFidelidadeMB.planoFidelidade.nomePlano}"
 							required="true" />
@@ -19,7 +26,7 @@
 						<p:outputLabel value="Valor em pontos" />
 						<p:outputLabel value="Conversão de pontos" />
 						<p:spinner
-							value="#{planoFidelidadeMB.planoFidelidade.valorAplicavel}"  />
+							value="#{planoFidelidadeMB.planoFidelidade.valorAplicavel}" />
 						<p:inputText
 							value="#{planoFidelidadeMB.planoFidelidade.pontoAplicavel}" />
 					</h:panelGrid>
@@ -34,6 +41,18 @@
 								<p:spinner
 									value="#{planoFidelidadeMB.planoFidelidade.metaPeriodo}"
 									min="0" required="true" />
+								<p:outputLabel value="Meta upgrade" />
+								<p:outputLabel value="Meta upgrade (Pontos)" />
+								<p:spinner
+									value="#{planoFidelidadeMB.planoFidelidade.metaUpgrade}"
+									min="0" required="true" />
+								<p:spinner
+									value="#{planoFidelidadeMB.planoFidelidade.metaUpgradePontos}"
+									min="0" required="true" />
+								<p:outputLabel value="Meta downgrade" />
+								<p:spinner
+									value="#{planoFidelidadeMB.planoFidelidade.metaDowngrade}"
+									min="0" />
 							</h:panelGrid>
 						</h:panelGrid>
 					</p:panel>
@@ -42,9 +61,35 @@
 						</p:panelGrid>
 					</p:panel>
 					<p:commandButton action="#{planoFidelidadeMB.salvar()}"
-						value="Salvar" update="cadastro" />
+						value="Salvar" update="cadastro lista" />
 				</h:panelGrid>
 			</p:panel>
+		</h:form>
+	</ui:define>
+	<ui:define name="footer">
+		<h:form id="lista">
+			<p:dataTable value="#{planoFidelidadeMB.listaPlanos}" var="plano"
+				selectionMode="single"
+				selection="#{planoFidelidadeMB.planoFidelidade}" rowKey="#{plano}">
+				<p:ajax event="rowSelect" update="cadastro" />
+				<p:column headerText="Nome plano">
+					<h:outputText value="#{plano.nomePlano}" />
+				</p:column>
+				<p:column headerText="Meta">
+					<h:outputText value="#{plano.metaPontos}" />
+				</p:column>
+				<p:column style="width:32px;text-align: center">
+					<p:commandButton update="lista"
+					  icon="ui-icon-search"
+						title="View"
+						action="#{planoFidelidadeMB.excluir()}"
+						>
+						<f:setPropertyActionListener value="#{plano}"
+							target="#{planoFidelidadeMB.planoFidelidade}" 
+							/>
+					</p:commandButton>
+				</p:column>
+			</p:dataTable>
 		</h:form>
 	</ui:define>
 </ui:decorate>
