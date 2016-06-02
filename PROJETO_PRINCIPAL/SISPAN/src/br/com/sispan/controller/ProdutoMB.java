@@ -15,6 +15,10 @@ import br.com.sispan.model.Produto;;
 @ManagedBean
 public class ProdutoMB extends GenericMB {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5614961461170613159L;
 	private Produto produto = new Produto();
 	private List<Produto> listaProdutos = new ArrayList();
 		

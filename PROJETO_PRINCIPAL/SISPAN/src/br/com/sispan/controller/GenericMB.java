@@ -20,6 +20,11 @@ import br.com.sispan.util.JPAUtil;
 
 public abstract class GenericMB implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8896371194744307879L;
+
 	protected abstract Bean getBean();
 
 	protected abstract void setBean(Bean b);

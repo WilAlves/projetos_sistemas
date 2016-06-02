@@ -8,12 +8,15 @@ import javax.faces.bean.RequestScoped;
 
 import br.com.sispan.interfaces.Bean;
 import br.com.sispan.model.Fornecedor;
-import br.com.sispan.model.PlanoFidelidade;
 
 @RequestScoped
 @ManagedBean
 public class FornecedorMB extends GenericMB {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7092805828495453883L;
 	private Fornecedor fornecedor = new Fornecedor();
 	private List<Fornecedor> listaFornecedores = new ArrayList();
 		

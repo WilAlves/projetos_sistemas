@@ -8,9 +8,11 @@
 		<h:form id="cadastro">
 			<p:panel header="Formulario de cadastro">
 				<h:panelGrid columns="1">
+					<p:outputLabel value="Código" for="id" redered="#{fornecedorMB.fornecedor.id != null}" />
+						<p:inputText id="id" value="#{fornecedorMB.fornecedor.id}" redered="#{fornecedorMB.fornecedor.id != null}" readonly="true" />
 					<p:outputLabel value="CNPJ" /><p:inputText value="#{fornecedorMB.fornecedor.CNPJ}" required="true" />
 					<p:outputLabel value="Nome Fantasia" /><p:inputText value="#{fornecedorMB.fornecedor.nome_fantasia}" required="true" />
-					<p:commandButton action="#{fornecedorMB.salvar()}" value="Salvar" update="cadastro" />
+					<p:commandButton action="#{fornecedorMB.salvar()}" value="Salvar" update="cadastro lista" />
 				</h:panelGrid>
 			</p:panel>
 		</h:form>
@@ -21,21 +23,12 @@
 				selectionMode="single"
 				selection="#{fornecedorMB.fornecedor}" rowKey="#{plano}">
 				<p:ajax event="rowSelect" update="cadastro" />
-				<p:column headerText="Nome plano">
-					<h:outputText value="#{plano.CNPJ}" />
-				</p:column>
-				<p:column headerText="Meta">
-					<h:outputText value="#{plano.nome_fantasia}" />
-				</p:column>
+				<p:column headerText="ID"><h:outputText value="#{plano.id}" /></p:column>
+				<p:column headerText="CNPJ"><h:outputText value="#{plano.CNPJ}" /></p:column>
+				<p:column headerText="Nome Fantasia"><h:outputText value="#{plano.nome_fantasia}" /></p:column>
 				<p:column style="width:32px;text-align: center">
-					<p:commandButton update="lista"
-					  icon="ui-icon-search"
-						title="View"
-						action="#{fornecedorMB.excluir()}"
-						>
-						<f:setPropertyActionListener value="#{plano}"
-							target="#{fornecedorMB.fornecedor}" 
-							/>
+					<p:commandButton update="lista" icon="ui-icon-search" title="View" action="#{fornecedorMB.excluir()}" >
+						<f:setPropertyActionListener value="#{plano}" target="#{fornecedorMB.fornecedor}" />
 					</p:commandButton>
 				</p:column>
 			</p:dataTable>

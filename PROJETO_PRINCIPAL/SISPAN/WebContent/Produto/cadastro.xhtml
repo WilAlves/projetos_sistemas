@@ -8,41 +8,34 @@
 		<h:form id="cadastro">
 			<p:panel header="Formulario de cadastro">
 				<h:panelGrid columns="1">
-					<p:outputLabel value="Descrição" /><p:inputText value="#{produtoMB.produto.descricao}" required="true" />
-					<p:outputLabel value="Valor Unitario" /><p:inputText value="#{produtoMB.produto.valor}" required="true" />
-					<p:outputLabel value="Quantidade" /><p:inputText value="#{produtoMB.produto.quantidade}" required="true" />
-					<p:commandButton action="#{produtoMB.salvar()}" value="Salvar" update="cadastro" />
+					<p:outputLabel value="Código" for="id" redered="#{produtoMB.produto.id != null}" />
+						<p:inputText id="id" value="#{produtoMB.produto.id}" redered="#{produtoMB.produto.id != null}" readonly="true" />
+					<p:outputLabel value="Descrição" />
+						<p:inputText value="#{produtoMB.produto.descricao}" required="true" />
+					<p:outputLabel value="Valor Unitario" />
+						<p:inputText value="#{produtoMB.produto.valor}" required="true" />
+					<p:outputLabel value="Quantidade" />
+						<p:inputText value="#{produtoMB.produto.quantidade}" required="true" />
+					<p:commandButton action="#{produtoMB.salvar()}" value="Salvar" update="cadastro lista" />
 				</h:panelGrid>
 			</p:panel>
 		</h:form>
 	</ui:define>
-	
 	<ui:define name="footer">
 		<h:form id="lista">
-			<p:dataTable value="#{produtoMB.listaProdutos}" var="plano"
-				selectionMode="single"
-				selection="#{produtoMB.produto}" rowKey="#{plano}">
+			<p:dataTable value="#{produtoMB.listaProdutos}" var="plano"	selectionMode="single" selection="#{produtoMB.produto}" rowKey="#{plano}">
 				<p:ajax event="rowSelect" update="cadastro" />
-				<p:column headerText="Nome plano">
-					<h:outputText value="#{plano.descricao}" />
-				</p:column>
-				<p:column headerText="Meta">
-					<h:outputText value="#{plano.quantidade}" />
-				</p:column>
+				<p:column headerText="ID"><h:outputText value="#{plano.id}" /></p:column>
+				<p:column headerText="Descrição"><h:outputText value="#{plano.descricao}" /></p:column>
+				<p:column headerText="Qtde"><h:outputText value="#{plano.quantidade}" /></p:column>
+				<p:column headerText="Valor"><h:outputText value="#{plano.valor}" /></p:column>
 				<p:column style="width:32px;text-align: center">
-					<p:commandButton update="lista"
-					  icon="ui-icon-search"
-						title="View"
-						action="#{produtoMB.excluir()}"
-						>
-						<f:setPropertyActionListener value="#{plano}"
-							target="#{produtoMB.produto}" 
-							/>
+					<p:commandButton update="lista" icon="ui-icon-search" title="View" action="#{produtoMB.excluir()}" >
+						<f:setPropertyActionListener value="#{plano}" target="#{produtoMB.produto}" />
 					</p:commandButton>
 				</p:column>
 			</p:dataTable>
 		</h:form>
 	</ui:define>
-	
 </ui:decorate>
 </html>
