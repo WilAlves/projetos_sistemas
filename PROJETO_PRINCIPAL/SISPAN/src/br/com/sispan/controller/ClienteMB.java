@@ -31,7 +31,7 @@ public class ClienteMB extends GenericMB {
 	@Override
 	protected void setBean(Bean b) { // TODO Auto-generated method
 		this.setCliente((Cliente) b);
-		System.out.println("nome: "+this.cliente.getNomeCliente());
+		System.out.println("nome: "+this.cliente.getCartaoCliente());
 	}
 	
 	
