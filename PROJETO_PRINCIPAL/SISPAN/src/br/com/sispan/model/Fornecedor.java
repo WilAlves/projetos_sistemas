@@ -17,10 +17,6 @@ public class Fornecedor implements Bean {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * 
-	 */
-
 	@Id
 	@GeneratedValue
 	private Long id;
