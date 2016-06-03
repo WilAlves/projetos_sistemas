@@ -1,0 +1,23 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <ui:decorate template="/tema/padrao.xhtml">
+        <ui:define name="centro">
+        <h:form id="cadastro">
+        <fieldset>
+        <legend>Formulario de Cadastro Receita</legend>
+   		</fieldset>
+   		  <p:panelGrid columns="2">
+          	<p:outputLabel value="Descrição" /><p:inputText value="#{receitaMB.receita.receitadescricao}" />
+          	<p:outputLabel value="Tipo" /><p:inputText value="#{receitaMB.receita.receitatipo}" />
+          	<p:outputLabel value="Codigo" /> <p:inputText value="#{receitaMB.receita.receitaid}" />
+          	<p:outputLabel value="Modo de Fazer" /> <p:inputTextarea value="#{receitaMB.receita.receitamdfazer}" />
+            <p:commandButton action="#{receitaMB.salvar()}" value="Cadastrar" />
+            <p:button  value="Voltar" href="MenuProducao.xhtml"/>
+          </p:panelGrid>			
+   
+        </h:form>
+        </ui:define>
+      </ui:decorate>
+</html>
