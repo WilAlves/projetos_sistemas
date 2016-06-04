@@ -10,7 +10,6 @@
 		<class>br.com.sispan.model.Usuario</class>
 		<class>br.com.sispan.model.Funcionario</class>
 		<class>br.com.sispan.model.Cliente</class>
-		<class>br.com.sispan.model.Ingredientes</class>
 		<class>br.com.sispan.model.Receita</class>
 		<class>br.com.sispan.model.Producao</class>
 		<properties>
