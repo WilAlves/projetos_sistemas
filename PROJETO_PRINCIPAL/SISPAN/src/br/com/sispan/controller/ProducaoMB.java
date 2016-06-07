@@ -3,17 +3,20 @@ package br.com.sispan.controller;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 import br.com.sispan.interfaces.Bean;
 import br.com.sispan.model.Producao;
 
-@RequestScoped
+@ViewScoped
 @ManagedBean
 public class ProducaoMB extends GenericMB {
 
-	private static final long serialVersionUID = 7092805828495453883L;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6907589437151369582L;
 	private Producao producao = new Producao();
-	private List<Producao> listaProducoes = new ArrayList();
+	private List<Producao> listaProducao = new ArrayList();
 	
 	public Producao getProducao() {
 		return producao;
@@ -24,7 +27,7 @@ public class ProducaoMB extends GenericMB {
 	}
 
 	@Override
-	protected Bean getBean() {	 
+	protected Bean getBean() {
 		return getProducao();
 	}
 
@@ -32,19 +35,19 @@ public class ProducaoMB extends GenericMB {
 	protected void setBean(Bean b) {
 		setProducao((Producao) b);
 	}
-	
+
 	@Override
 	public void setLista(List lista) {
 		System.out.println("setando lista: ");
-		this.listaProducoes = new ArrayList<Producao>(lista);
+		this.listaProducao = new ArrayList<Producao>(lista);
 	}
 	
-	public List<Producao> getListaProducoes() {
-		return listaProducoes;
+		
+	public List<Producao> getListaProducao() {
+		return listaProducao;
 	}
 
-	public void setListaProducoes(List<Producao> listaProducoes) {
-		this.listaProducoes = listaProducoes;
+	public void setListaProducao(List<Producao> listaProducao) {
+		this.listaProducao = listaProducao;
 	}
-	
 }

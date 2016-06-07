@@ -16,27 +16,18 @@ public class Receita implements Bean {
 
 	@Id
 	@GeneratedValue
-	@Column(name="receitaid")
 	private Long receitaid;
-	@Column(name="receitadescricao")
+	@Column(name="receitadescricao",nullable = false, length = 255, unique = true)
 	private String receitadescricao;
-	@Column(name="receitatipo")
+	@Column(name="receitatipo", nullable = false, length = 255, unique = true)
 	private String receitatipo;
-	@Column(name="receitamodofazer")
+	@Column(name="receitamodofazer", nullable = false, length = 255, unique = true)
 	private String receitamodofazer;
 	
 	@Override
 	public Long getId() {
 		// TODO Auto-generated method stub
 		return receitaid;
-	}
-
-	public Long getReceitaid() {
-		return receitaid;
-	}
-
-	public void setReceitaid(Long receitaid) {
-		this.receitaid = receitaid;
 	}
 
 	public String getReceitadescricao() {
@@ -67,6 +58,4 @@ public class Receita implements Bean {
 		return serialVersionUID;
 	}
 
-	
-	
 }

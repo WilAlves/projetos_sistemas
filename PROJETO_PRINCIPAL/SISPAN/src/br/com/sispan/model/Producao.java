@@ -16,29 +16,20 @@ public class Producao implements Bean {
 
 	@Id
 	@GeneratedValue
-	@Column(name="Produto_id")
-	private Long produto_id;
-	@Column(name="Produto_descricao")
+	private Long id;
+	@Column(name="Produto_descricao", nullable = false, length = 255, unique = true)
 	private String Produto_descricao;
-	@Column(name="Produto_tipo")
+	@Column(name="Produto_tipo", nullable = false, length = 255, unique = true)
 	private String Produto_tipo;
-	@Column(name="Produto_quantidade")
+	@Column(name="Produto_quantidade", nullable = false, length = 255, unique = true)
 	private String Produto_quantidade;
-	@Column(name="Produto_status")
+	@Column(name="Produto_status", nullable = false, length = 255, unique = true)
 	private String Produto_status;
 	
 	@Override
 	public Long getId() {
 		// TODO Auto-generated method stub
-		return produto_id;
-	}
-
-	public Long getProduto_id() {
-		return produto_id;
-	}
-
-	public void setProduto_id(Long produto_id) {
-		this.produto_id = produto_id;
+		return id;
 	}
 
 	public String getProduto_descricao() {
@@ -71,10 +62,6 @@ public class Producao implements Bean {
 
 	public void setProduto_status(String produto_status) {
 		Produto_status = produto_status;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
 	}
 
 	

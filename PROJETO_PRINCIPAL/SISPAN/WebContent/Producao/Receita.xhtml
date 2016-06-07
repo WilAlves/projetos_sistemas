@@ -6,13 +6,10 @@
     <ui:decorate template="/tema/padrao.xhtml">
         <ui:define name="centro">
         	<h:form id="cadastro">
-		        <fieldset>
-		        <legend>Formulario de Cadastro Receita</legend>
-		   		</fieldset>
-	   				<p:panel>
+		    		<p:panel header="Formulario de cadastro">
 		   		  		<p:panelGrid columns="2">
-			   		  		<p:outputLabel value="Código" for="id" redered="#{receitaMB.receita.receitaid != null}" />
-							<p:inputText id="id" value="#{receitaMB.receita.receitaid}" redered="#{receitaMB.receita.receitaid != null}" readonly="true" />	   		  	
+			   		  		<p:outputLabel value="Código" for="id" redered="#{receitaMB.receita.id != null}" />
+							<p:inputText id="id" value="#{receitaMB.receita.id}" redered="#{receitaMB.receita.id != null}" readonly="true" />	   		  	
 							<p:outputLabel value="Descrição" /><p:inputText value="#{receitaMB.receita.receitadescricao}" required="true"/>
 				          	<p:outputLabel value="Tipo" /><p:inputText value="#{receitaMB.receita.receitatipo}" required="true"/>
 				          	<p:outputLabel value="Modo de Fazer" /><p:inputTextarea row="10" col="10" value="#{receitaMB.receita.receitamdfazer}" required="true"/>
@@ -29,14 +26,14 @@
 					selectionMode="single"
 					selection="#{receitaMB.receita}" rowKey="#{receita}">
 					<p:ajax event="rowSelect" update="cadastro" />
-					<p:column headerText="Codigo"><h:outputText value="#{receita.receitaid}" /></p:column>
+					<p:column headerText="Codigo"><h:outputText value="#{receita.id}" /></p:column>
 					<p:column headerText="Descrição"><h:outputText value="#{receita.receitadescricao}" /></p:column>
 					<p:column headerText="Tipo"><h:outputText value="#{receita.receitatipo}" /></p:column>
 					<p:column headerText="Modo de Fazer"><h:outputText value="#{receita.receitamdfazer}" /></p:column>
 					
 						<p:column style="width:32px;text-align: center">
 							<p:commandButton update="lista" icon="ui-icon-search" title="View" action="#{receitaMB.excluir()}">
-								<f:setPropertyActionListener value="#{receitaMB}" target="#{receitaMB.receita}" />
+								<f:setPropertyActionListener value="#{receita}" target="#{receitaMB.receita}" />
 							</p:commandButton>
 						</p:column>
 				</p:dataTable>

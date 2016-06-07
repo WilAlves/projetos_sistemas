@@ -6,13 +6,10 @@
     <ui:decorate template="/tema/padrao.xhtml">
         <ui:define name="centro">
         	<h:form id="cadastro">
-		        <fieldset>
-		        <legend>Formulario de Cadastro Producao</legend>
-		   		</fieldset>
-	   				<p:panel>
+		      		<p:panel header="Formulario de cadastro">
 		   		  		<p:panelGrid columns="2">
-			   		  		<p:outputLabel value="Codigo" for="id" redered="#{producaoMB.producao.produto_id != null}"/>
-							<p:inputText id="id" value="#{producaoMB.producao.produto_id}" redered="#{producaoMB.producao.produto_id != null}" readonly="true" />	   		  	
+			   		  		<p:outputLabel value="Codigo" for="id" redered="#{producaoMB.producao.id != null}"/>
+							<p:inputText id="id" value="#{producaoMB.producao.id}" redered="#{producaoMB.producao.id != null}" readonly="true" />	   		  	
 							<p:outputLabel value="Descricão"/><p:inputText value="#{producaoMB.producao.produto_descricao}" required="true"/>
 				          	<p:outputLabel value="Tipo" /><p:inputText value="#{producaoMB.producao.produto_tipo}" required="true"/>
 				          	<p:outputLabel value="Quantidade" /><p:inputText value="#{producaoMB.producao.produto_quantidade}" required="true"/>
@@ -26,11 +23,11 @@
              
 		<ui:define name="footer">
 			<h:form id="lista">
-				<p:dataTable value="#{producaoMB.listaProducoes}" var="producao"
+				<p:dataTable value="#{producaoMB.listaProducao}" var="producao"
 					selectionMode="single"
 					selection="#{producaoMB.producao}" rowKey="#{producao}">
 					<p:ajax event="rowSelect" update="cadastro" />
-					<p:column headerText="Codigo"><h:outputText value="#{producao.produto_id}" /></p:column>
+					<p:column headerText="Codigo"><h:outputText value="#{producao.id}" /></p:column>
 					<p:column headerText="Descrição"><h:outputText value="#{producao.produto_descricao}" /></p:column>
 					<p:column headerText="Tipo"><h:outputText value="#{producao.produto_tipo}" /></p:column>
 					<p:column headerText="Quantidade"><h:outputText value="#{producao.produto_quantidade}" /></p:column>
