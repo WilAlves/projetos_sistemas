@@ -1,0 +1,45 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <ui:decorate template="/tema/padrao.xhtml">
+        <ui:define name="centro">
+        	<h:form id="cadastro">
+		        <fieldset>
+		        <legend>Formulario de Cadastro Ingredientes</legend>
+		   		</fieldset>
+	   				<p:panel>
+		   		  		<p:panelGrid columns="2">
+			   		  		<p:outputLabel value="Código" for="id" redered="#{ingredienteMB.ingrediente.ingredienteid != null}" />
+							<p:inputText id="id" value="#{ingredienteMB.ingrediente.ingredienteidid}" redered="#{ingredienteMB.ingrediente.ingredienteid != null}" readonly="true" />	   		  	
+							<p:outputLabel value="Descrição"/><p:inputText value="#{ingredienteMB.ingrediente.descricao}" required="true"/>
+				          	<p:outputLabel value="Tipo" /><p:inputText value="#{ingredienteMB.ingrediente.tipo}" required="true"/>
+				          	<p:outputLabel value="Quantidade"/><p:inputText value="#{ingredienteMB.ingrediente.quantidade}" required="true"/>
+				          	<p:commandButton action="#{ingredienteMB.salvar()}" value="Salvar"  update="cadastro lista"/>
+				          	<p:button  value="Voltar" href="MenuProducao.xhtml"/>
+			        	</p:panelGrid>
+        			</p:panel>			
+        	</h:form>
+        </ui:define>
+             
+		<ui:define name="footer">
+			<h:form id="lista">
+				<p:dataTable value="#{ingredienteMB.listaIngredinete}" var="ingredientes"
+					selectionMode="single"
+					selection="#{ingredienteMB.ingrediente}" rowKey="#{ingredientes}">
+					<p:ajax event="rowSelect" update="cadastro" />
+					<p:column headerText="Codigo"><h:outputText value="#{ingredienteMB.ingrediente.ingredienteid}" /></p:column>
+					<p:column headerText="Descrição"><h:outputText value="#{ingredienteMB.ingrediente.descricao}" /></p:column>
+					<p:column headerText="Tipo"><h:outputText value="#{ingredienteMB.ingrediente.tipo}" /></p:column>
+					<p:column headerText="Quantidade"><h:outputText value="#{ingredienteMB.ingrediente.quantidade}" /></p:column>
+						<p:column style="width:32px;text-align: center">
+							<p:commandButton update="lista" icon="ui-icon-search" title="View" action="#{ingredienteMB.excluir()}">
+								<f:setPropertyActionListener value="#{ingredientes}" target="#{ingredienteMB.ingrediente}" />
+							</p:commandButton>
+						</p:column>
+				</p:dataTable>
+			</h:form>
+		</ui:define>
+	</ui:decorate>	
+</html>

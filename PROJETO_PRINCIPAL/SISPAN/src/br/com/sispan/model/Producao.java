@@ -7,7 +7,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import br.com.sispan.interfaces.Bean;
 
-
 @Entity
 @Table
 public class Producao implements Bean {
@@ -16,7 +15,7 @@ public class Producao implements Bean {
 
 	@Id
 	@GeneratedValue
-	private Long id;
+	private Long Produto_id;
 	@Column(name="Produto_descricao", nullable = false, length = 255, unique = true)
 	private String Produto_descricao;
 	@Column(name="Produto_tipo", nullable = false, length = 255, unique = true)
@@ -29,7 +28,7 @@ public class Producao implements Bean {
 	@Override
 	public Long getId() {
 		// TODO Auto-generated method stub
-		return id;
+		return Produto_id;
 	}
 
 	public String getProduto_descricao() {
@@ -64,5 +63,4 @@ public class Producao implements Bean {
 		Produto_status = produto_status;
 	}
 
-	
 }
