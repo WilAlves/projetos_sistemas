@@ -4,6 +4,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import br.com.sispan.interfaces.Bean;
 
@@ -23,6 +26,10 @@ public class Receita implements Bean {
 	private String receitatipo;
 	@Column(name="receitamodofazer", nullable = false, length = 255, unique = true)
 	private String receitamodofazer;
+	
+	/*@ManyToMany
+	@JoinTable(name= "Ingrediente",joinColumns = @JoinColumn(name= "receitaid"),
+	inverseJoinColumns = @JoinColumn(name = "Produto_id"))*/
 	
 	@Override
 	public Long getId() {
