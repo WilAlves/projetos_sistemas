@@ -1,9 +1,15 @@
 package br.com.sispan.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import br.com.sispan.interfaces.Bean;
@@ -27,6 +33,20 @@ public class Fornecedor implements Bean {
 	@Column(name = "nome_fantasia", nullable = false, length = 255, unique = true)
 	private String nome_fantasia;
 	
+	@ManyToMany
+    @JoinTable(name="supplier_product",
+    		joinColumns={@JoinColumn(name="idprod")},
+    		inverseJoinColumns={@JoinColumn(name="idsupp")})    
+  
+    private List<Produto> produtos = new ArrayList<Produto>();
+    
+    public List<Produto> getProduto() {
+		return produtos;
+	}
+
+	public void setProdutos(List<Produto> produtos) {
+		this.produtos = produtos;
+	};
 	
 	
 	//Metodos de GET e SET...

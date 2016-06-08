@@ -1,0 +1,27 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:decorate template="/tema/padrao.xhtml">
+	<ui:define name="centro">
+		<h:form id="cadastro">
+			<p:panel header="Relacione cada Produto com seus devidos Fornecedores">
+				<h:panelGrid columns="1">
+						<h:outputLabel value="Fornecedor:" />
+									<h:selectOneMenu>
+										<f:selectItem itemLabel="Selecione..." />
+										<f:selectItems value="#{fornecedorMB.listaFornecedores}" var="fornece" itemValue="#{fornece}" itemLabel="#{fornece.nome_fantasia}" />
+									</h:selectOneMenu>
+						<h:outputLabel value="Produto:" />
+										<h:selectOneMenu>
+											<f:selectItem itemLabel="Selecione..." />
+											<f:selectItems value="#{produtoMB.listaProdutos}"  var="prod" itemValue="#{prod}" itemLabel="#{prod.descricao}" />							
+										</h:selectOneMenu>
+						<p:commandButton action="#{supplier_ProductMB.salvar()}" value="Salvar" update="" />
+				</h:panelGrid>
+			</p:panel>
+		</h:form>
+	</ui:define>
+</ui:decorate>
+</html>
