@@ -43,7 +43,6 @@ public class Funcionario implements Bean {
 	private Usuario usuario;
 	
 	
-
 	public Long getId() {
 		return id;
 	}

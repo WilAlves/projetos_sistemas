@@ -19,9 +19,12 @@
         	</h:selectOneMenu>
         	
         	<p:panelGrid columns="2"> 
+<<<<<<< b0d675697c38459a9ba55b2161ca1fd2ee14e877
         	
         	<p:outputLabel value="ID Funcionario" for="id" redered="#{funcionarioMB.funcionario.id != null}" />
           	<p:inputText id="id" value="#{funcionarioMB.funcionario.id}" redered="#{funcionarioMB.funcionario.id != null}" readonly="true" size="10"/> 
+=======
+>>>>>>> Fazendo CRUD completo no usuario
         	        	        	
         	<p:outputLabel value="Matricula" />
           	<p:inputText value="#{funcionarioMB.funcionario.matriculaFuncionario}" />
@@ -34,12 +37,22 @@
           	
           	<p:outputLabel value="RG" />
           	<p:inputText value="#{funcionarioMB.funcionario.rgFuncionario}" />
+<<<<<<< b0d675697c38459a9ba55b2161ca1fd2ee14e877
           	
 			<p:commandButton action="#{funcionarioMB.salvar}" value="Salvar" update="cadastro lista" /> 
+          	   	
+=======
+>>>>>>> Fazendo CRUD completo no usuario
+          	
+			<p:commandButton action="#{funcionarioMB.salvar}" value="Salvar" update="@this" /> 
           	   	
           	
         </p:panelGrid>
         </p:panelGrid>
+<<<<<<< b0d675697c38459a9ba55b2161ca1fd2ee14e877
+        </p:panelGrid>
+=======
+>>>>>>> Fazendo CRUD completo no usuario
        
     </fieldset>
     </h:form>
@@ -55,8 +68,13 @@
 				<p:column headerText="CTPS"><h:outputText value="#{plano.ctpsFuncionario}" /></p:column>
 				<p:column headerText="RG"><h:outputText value="#{plano.rgFuncionario}" /></p:column>
 				
+<<<<<<< b0d675697c38459a9ba55b2161ca1fd2ee14e877
 				<p:column style="width:32px;text-align: center;font-size: 0.5em">
 					<p:commandButton update="lista" icon="ui-icon-circle-close" title="View" action="#{funcionarioMB.excluir()}" >
+=======
+				<p:column style="width:32px;text-align: center">
+					<p:commandButton update="lista" icon="ui-icon-search" title="View" action="#{funcionarioMB.excluir()}" >
+>>>>>>> Fazendo CRUD completo no usuario
 						<f:setPropertyActionListener value="#{plano}" target="#{funcionarioMB.funcionario}" />
 					</p:commandButton>
 				</p:column>
