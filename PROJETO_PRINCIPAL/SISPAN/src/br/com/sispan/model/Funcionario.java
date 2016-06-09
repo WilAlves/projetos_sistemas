@@ -1,9 +1,12 @@
 package br.com.sispan.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import br.com.sispan.interfaces.Bean;
@@ -14,7 +17,9 @@ import br.com.sispan.interfaces.Bean;
 public class Funcionario implements Bean {
 	
 	private static final long serialVersionUID = -478153217057072509L;
-	
+
+
+		
 	@Id
 	@GeneratedValue
 	@Column(name="id_funcionario")
@@ -31,6 +36,13 @@ public class Funcionario implements Bean {
 	
 	@Column(name="rg_funcionario")
 	private String rgFuncionario;
+	
+	
+	@OneToOne(cascade=CascadeType.REFRESH)
+	@JoinColumn(name="id_usuario")
+	private Usuario usuario;
+	
+	
 
 	public Long getId() {
 		return id;

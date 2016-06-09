@@ -1,54 +1,71 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
-    <ui:decorate template="/tema/padrao.xhtml">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	<ui:decorate template="/tema/padrao.xhtml">
         <ui:define name="centro">
-        <h:form id="dados">
+        <h:form id="cadastro">
         <fieldset>
         <legend>Cadastro de Usuario</legend>
           <p:panelGrid columns="4">
-          
-          	
+ 				
+ 				<p:outputLabel value="ID_Usuario" for="id" redered="#{usuarioMB.usuario.id != null}" />
+          		<p:inputText id="id" value="#{usuarioMB.usuario.id}" redered="#{usuarioMB.usuario.id != null}" readonly="true" size="10"/> 				
+ 
           		<p:outputLabel value="Login (e-mail)" />
-          		<p:inputText value="#{usuarioMB.usuario.loginUsuario}" />
+          		<p:inputText value="#{usuarioMB.usuario.loginUsuario}" size="55"/>
           	
           		<p:outputLabel value="Senha" />
-          		<p:password value="#{usuarioMB.usuario.senhaUsuario}" />
+          		<p:password value="#{usuarioMB.usuario.senhaUsuario}" size="10"/>
           	
           		<p:outputLabel value="Nome" />
-          		<p:inputText value="#{usuarioMB.usuario.nomeUsuario}" />
+          		<p:inputText value="#{usuarioMB.usuario.nomeUsuario}" size="55"/>
           	
 	          	<p:outputLabel value="CEP" />
-	          	<p:inputText value="#{usuarioMB.usuario.cepUsuario}" />
+	          	<p:inputText value="#{usuarioMB.usuario.cepUsuario}" size="10"/>
 	          	
 	          	<p:outputLabel value="Endereço" />
-	          	<p:inputText value="#{usuarioMB.usuario.enderecoUsuario}" />
+	          	<p:inputText value="#{usuarioMB.usuario.enderecoUsuario}" size="55"/>
 	          	
 	          	<p:outputLabel value="Telefone" />
-	          	<p:inputText value="#{usuarioMB.usuario.foneUsuario}" />
+	          	<p:inputText value="#{usuarioMB.usuario.foneUsuario}" size="10"/>
 	          	
 	          	<p:outputLabel value="CPF" />
-	          	<p:inputText value="#{usuarioMB.usuario.cpfUsuario}" />
+	          	<p:inputText value="#{usuarioMB.usuario.cpfUsuario}" size="10"/>
 	          	
 	          	<p:outputLabel value="Data de Nascimento" />
-	          	<p:inputText value="#{usuarioMB.usuario.dataNascimentoUsuario}" />         		
-          	
+	          	<p:inputText value="#{usuarioMB.usuario.dataNascimentoUsuario}" size="10"/>
+          		
+          		<p:commandButton action="#{usuarioMB.salvar()}" value="Salvar" update="cadastro lista" />
+          		
           </p:panelGrid>
           
-          	
         </fieldset>
-          
-			<p:panelGrid columns="4">
-          
-          		<p:commandButton action="#{usuarioMB.salvar}" value="Salvar" update="@this" />
-          
-          	</p:panelGrid>
-			
-          
         </h:form>
-        
-                          
-        </ui:define>
-    </ui:decorate>
+    	</ui:define>
+    	
+         <ui:define name="footer">
+		<h:form id="lista">
+			<p:dataTable value="#{usuarioMB.listaUsuarios}" var="plano"	selectionMode="single" selection="#{usuarioMB.usuario}" rowKey="#{plano}">
+				<p:ajax event="rowSelect" update="cadastro" />
+				<p:column headerText="ID"><h:outputText value="#{plano.id}" /></p:column>
+				<p:column headerText="Login"><h:outputText value="#{plano.loginUsuario}" /></p:column>
+				<p:column headerText="Nome"><h:outputText value="#{plano.nomeUsuario}" /></p:column>
+				<p:column headerText="CEP"><h:outputText value="#{plano.cepUsuario}" /></p:column>
+				<p:column headerText="Endereço"><h:outputText value="#{plano.enderecoUsuario}" /></p:column>
+				<p:column headerText="Telefone"><h:outputText value="#{plano.foneUsuario}" /></p:column>
+				<p:column headerText="CPF"><h:outputText value="#{plano.cpfUsuario}" /></p:column>
+				<p:column headerText="Data Nasc"><h:outputText value="#{plano.dataNascimentoUsuario}" /></p:column>
+				<p:column style="width:32px;text-align: center">
+					<p:commandButton update="lista" icon="ui-icon-search" title="View" action="#{usuarioMB.excluir()}" >
+						<f:setPropertyActionListener value="#{plano}" target="#{usuarioMB.usuario}" />
+					</p:commandButton>
+				</p:column>
+			</p:dataTable>
+		</h:form>
+		</ui:define>
+    	
+
+	</ui:decorate>
 </html>

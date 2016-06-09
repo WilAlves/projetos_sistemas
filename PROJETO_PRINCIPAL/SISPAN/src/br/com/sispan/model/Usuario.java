@@ -15,7 +15,7 @@ public class Usuario implements Bean {
 	 * 
 	 */
 	private static final long serialVersionUID = -478153217057072509L;
-
+	
 	@Id
 	@GeneratedValue
 	@Column(name="id_usuario")

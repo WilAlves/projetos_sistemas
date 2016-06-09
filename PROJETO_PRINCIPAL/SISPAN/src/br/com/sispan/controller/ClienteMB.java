@@ -1,15 +1,17 @@
 package br.com.sispan.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-
+import javax.faces.bean.ViewScoped;
 
 import br.com.sispan.interfaces.Bean;
 import br.com.sispan.model.Cliente;
+import br.com.sispan.model.Usuario;
 
-@RequestScoped
+@ViewScoped
 @ManagedBean
 public class ClienteMB extends GenericMB {
 
@@ -18,36 +20,39 @@ public class ClienteMB extends GenericMB {
 	 */
 	private static final long serialVersionUID = 3293363169350986859L;
 	private Cliente cliente = new Cliente();
+	private List<Cliente> listaClientes = new ArrayList();
 
+	public Cliente getCliente() {
+		return cliente;
+	}
+	
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
 
-	public Cliente getCliente() {
-		return this.cliente;
+	@Override
+	protected Bean getBean() {
+		return getCliente();
 	}
 
+	@Override
+	protected void setBean(Bean b) {
+		setCliente((Cliente)b);
+	}
 	
 	@Override
-	protected Bean getBean() { // TODO Auto-generated method stub
-		return cliente;
-	}
-
-	
-	@Override
-	protected void setBean(Bean b) { // TODO Auto-generated method
-		this.setCliente((Cliente) b);
-		System.out.println("nome: "+this.cliente.getCartaoCliente());
-	}
-
-	@Override
-	public void setLista(List<Bean> lista) {
-		// TODO Auto-generated method stub
+	public void setLista(List lista) {
+		System.out.println("Setando lista: ");
+		this.listaClientes = new ArrayList<Cliente>(lista);
 		
+	}	
+	
+	public List<Cliente> getListaClientes(){
+		return listaClientes;
 	}
 	
-	
-
-
+	public void setListaClientes(List<Cliente> listaClientes){
+		this.listaClientes = listaClientes;
+	}
 	
 }
