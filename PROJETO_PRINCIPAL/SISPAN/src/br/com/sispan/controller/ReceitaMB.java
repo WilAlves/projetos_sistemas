@@ -11,7 +11,13 @@ import br.com.sispan.model.Receita;
 @ManagedBean
 public class ReceitaMB extends GenericMB {
 
-	private static final long serialVersionUID = 6907589437151369582L;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5254101287939016253L;
+	/**
+	 * 
+	 */
 	private Receita receita = new Receita();
 	private List<Receita> listaReceitas = new ArrayList();
 	

@@ -6,15 +6,8 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.persistence.Query;
 import javax.persistence.EntityManager;
-import javax.persistence.Table;
-
-import org.eclipse.jdt.internal.compiler.lookup.AnnotatableTypeSystem;
-
 import br.com.sispan.dao.GenericDAO;
-import br.com.sispan.dao.PlanoFidelidadeDAO;
-import br.com.sispan.dao.FornecedorDAO;
 import br.com.sispan.interfaces.Bean;
 import br.com.sispan.util.JPAUtil;
 
@@ -51,6 +44,7 @@ public abstract class GenericMB implements Serializable {
 			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage("Falha", "Falha ao salvar: " + b.getClass().getSimpleName() + "\n" + e));
 		}
+		carregaLista();
 	}
 
 	public void excluir() {
@@ -62,6 +56,7 @@ public abstract class GenericMB implements Serializable {
 		dao.excluir(b);
 		em.getTransaction().commit();
 		em.close();
+		carregaLista();
 	}
 
 	
@@ -88,4 +83,5 @@ public abstract class GenericMB implements Serializable {
 		setLista(lista);
 		em.close();
 	}
+	
 }

@@ -14,9 +14,12 @@ public class ProducaoMB extends GenericMB {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 6907589437151369582L;
+	private static final long serialVersionUID = 8667976877645459832L;
+	/**
+	 * 
+	 */
 	private Producao producao = new Producao();
-	private List<Producao> listaProducao = new ArrayList();
+	private List<Producao> listaProducoes = new ArrayList();
 	
 	public Producao getProducao() {
 		return producao;
@@ -39,15 +42,15 @@ public class ProducaoMB extends GenericMB {
 	@Override
 	public void setLista(List lista) {
 		System.out.println("setando lista: ");
-		this.listaProducao = new ArrayList<Producao>(lista);
+		this.listaProducoes = new ArrayList<Producao>(lista);
 	}
 	
 		
 	public List<Producao> getListaProducao() {
-		return listaProducao;
+		return listaProducoes;
 	}
 
 	public void setListaProducao(List<Producao> listaProducao) {
-		this.listaProducao = listaProducao;
+		this.listaProducoes = listaProducao;
 	}
 }

@@ -12,7 +12,10 @@ package br.com.sispan.controller;
 	@ManagedBean
 	public class IngredienteMB extends GenericMB {
 
-		private static final long serialVersionUID = 6907589437151369582L;
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 2194919161836237152L;
 		private Ingrediente ingrediente = new Ingrediente();
 		private List<Ingrediente> listaIngredientes = new ArrayList();
 		

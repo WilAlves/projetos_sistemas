@@ -10,8 +10,8 @@
 		   		  		<p:panelGrid columns="2">
 			   		  		<p:outputLabel value="Código" for="id" redered="#{receitaMB.receita.id != null}" />
 							<p:inputText id="id" value="#{receitaMB.receita.id}" redered="#{receitaMB.receita.id != null}" readonly="true" />	   		  	
-							<p:outputLabel value="Descrição" /><p:inputText value="#{receitaMB.receita.receitadescricao}" required="true"/>
-				          	<p:outputLabel value="Tipo" /><p:inputText value="#{receitaMB.receita.receitatipo}" required="true"/>
+							<p:outputLabel value="Descricão"/><p:inputText value="#{receitaMB.receita.receitadescricao}" required="true"/>
+				          	<p:outputLabel value="Tipo"/><p:inputText value="#{receitaMB.receita.receitatipo}" required="true"/>
 				          	<p:outputLabel value="Modo de Fazer" /><p:inputTextarea row="10" col="10" value="#{receitaMB.receita.receitamdfazer}" required="true"/>
 				          	<p:commandButton action="#{receitaMB.salvar()}" value="Salvar"  update="cadastro lista"/>
 				          

@@ -29,9 +29,11 @@ public class GenericDAO {
 			this.cadastrar(model);
 		}
 	}
+	
 	public void excluir(Bean model){
-		entityManager.remove(model);		
+		entityManager.remove(entityManager.merge(model));		
 	}
+	
 	
 	public List  listar(String query){
 		Query cursor = entityManager.createQuery(query);
