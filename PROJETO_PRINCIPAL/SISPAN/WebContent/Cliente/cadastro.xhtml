@@ -23,6 +23,7 @@
           	<p:inputText value="#{clienteMB.cliente.codcartaoCliente}" />
 			          	
         	<p:commandButton action="#{clienteMB.salvar()}" value="Salvar" update="cadastro lista" />
+
     	          	          	
         </p:panelGrid>
          
@@ -30,7 +31,8 @@
         </h:form>
         </ui:define>
         
-        <ui:define name="footer">
+
+                 <ui:define name="footer">
 		<h:form id="lista">
 			<p:dataTable value="#{clienteMB.listaClientes}" var="plano"	selectionMode="single" selection="#{clienteMB.cliente}" rowKey="#{plano}">
 				<p:ajax event="rowSelect" update="cadastro" />
@@ -40,6 +42,7 @@
 				<p:column headerText="Código"><h:outputText value="#{plano.codcartaoCliente}" /></p:column>
 				<p:column style="width:32px;text-align: center;font-size: 0.5em">
 					<p:commandButton update="lista" icon="ui-icon-circle-close" title="View" action="#{clienteMB.excluir()}" >
+
 						<f:setPropertyActionListener value="#{plano}" target="#{clienteMB.cliente}" />
 					</p:commandButton>
 				</p:column>

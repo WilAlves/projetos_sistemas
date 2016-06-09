@@ -22,6 +22,7 @@
         	
         	<p:outputLabel value="ID Funcionario" for="id" redered="#{funcionarioMB.funcionario.id != null}" />
           	<p:inputText id="id" value="#{funcionarioMB.funcionario.id}" redered="#{funcionarioMB.funcionario.id != null}" readonly="true" size="10"/> 
+
         	        	        	
         	<p:outputLabel value="Matricula" />
           	<p:inputText value="#{funcionarioMB.funcionario.matriculaFuncionario}" />
@@ -37,9 +38,14 @@
           	
 			<p:commandButton action="#{funcionarioMB.salvar}" value="Salvar" update="cadastro lista" /> 
           	   	
+
+          	
+			<p:commandButton action="#{funcionarioMB.salvar}" value="Salvar" update="@this" /> 
+          	   	
           	
         </p:panelGrid>
         </p:panelGrid>
+
        
     </fieldset>
     </h:form>
@@ -55,8 +61,10 @@
 				<p:column headerText="CTPS"><h:outputText value="#{plano.ctpsFuncionario}" /></p:column>
 				<p:column headerText="RG"><h:outputText value="#{plano.rgFuncionario}" /></p:column>
 				
+
 				<p:column style="width:32px;text-align: center;font-size: 0.5em">
 					<p:commandButton update="lista" icon="ui-icon-circle-close" title="View" action="#{funcionarioMB.excluir()}" >
+
 						<f:setPropertyActionListener value="#{plano}" target="#{funcionarioMB.funcionario}" />
 					</p:commandButton>
 				</p:column>

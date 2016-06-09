@@ -1,33 +1,31 @@
+
 package br.com.sispan.controller;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
-import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpSession;
-
+import javax.faces.bean.ViewScoped;
 import br.com.sispan.interfaces.Bean;
 import br.com.sispan.model.Usuario;
 
-@RequestScoped
+@ViewScoped
 @ManagedBean
 public class UsuarioMB extends GenericMB {
-
+	
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -915511402250833703L;
+	private static final long serialVersionUID = -6031504960846687438L;
 	private Usuario usuario = new Usuario();
 	private List<Usuario> listaUsuarios = new ArrayList();
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
 	
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
-	}
-
-	public Usuario getUsuario() {
-		return this.usuario;
 	}
 
 	public void logar() {
@@ -37,6 +35,17 @@ public class UsuarioMB extends GenericMB {
 	//	salvar();
 	}
 	 
+	
+	@Override
+	protected Bean getBean() {
+		return getUsuario();
+	}
+
+	@Override
+	protected void setBean(Bean b) {
+		setUsuario((Usuario)b);
+	}
+	
 	@Override
 	public void setLista(List lista) {
 		System.out.println("Setando lista: ");
@@ -50,17 +59,10 @@ public class UsuarioMB extends GenericMB {
 	
 	public void setListaUsuarios(List<Usuario> listaUsuarios){
 		this.listaUsuarios = listaUsuarios;
-}
-
-	@Override
-	protected Bean getBean() { // TODO Auto-generated method stub
-		return usuario;
 	}
-
-	@Override
-	protected void setBean(Bean b) { // TODO Auto-generated method
-		this.setUsuario((Usuario) b);
-	}
-
 	
 }
+
+
+
+	

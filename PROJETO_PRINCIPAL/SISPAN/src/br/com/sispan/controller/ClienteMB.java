@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
+
 import javax.faces.bean.ViewScoped;
+
 import br.com.sispan.interfaces.Bean;
 import br.com.sispan.model.Cliente;
 
@@ -19,7 +21,7 @@ public class ClienteMB extends GenericMB {
 	private Cliente cliente = new Cliente();
 	private List<Cliente> listaClientes = new ArrayList();
 
-	public Cliente getCliente() {
+	public Cliente getClientes() {
 		return cliente;
 	}
 	
@@ -29,7 +31,7 @@ public class ClienteMB extends GenericMB {
 
 	@Override
 	protected Bean getBean() {
-		return getCliente();
+		return getClientes();
 	}
 
 	@Override
