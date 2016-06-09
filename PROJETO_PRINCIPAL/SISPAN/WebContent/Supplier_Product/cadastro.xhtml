@@ -11,12 +11,12 @@
 						<h:outputLabel value="Fornecedor:" />
 									<h:selectOneMenu>
 										<f:selectItem itemLabel="Selecione..." />
-										<f:selectItems value="#{fornecedorMB.listaFornecedores}" var="fornece" itemValue="#{fornece}" itemLabel="#{fornece.nome_fantasia}" />
+										<f:selectItems value="#{fornecedorMB.listaFornecedores}" var="fornece" itemValue="#{fornece.id}" itemLabel="#{fornece.nome_fantasia}" />
 									</h:selectOneMenu>
 						<h:outputLabel value="Produto:" />
 										<h:selectOneMenu>
 											<f:selectItem itemLabel="Selecione..." />
-											<f:selectItems value="#{produtoMB.listaProdutos}"  var="prod" itemValue="#{prod}" itemLabel="#{prod.descricao}" />							
+											<f:selectItems value="#{produtoMB.listaProdutos}"  var="prod" itemValue="#{prod.id}" itemLabel="#{prod.descricao}" />							
 										</h:selectOneMenu>
 						<p:commandButton action="#{supplier_ProductMB.salvar()}" value="Salvar" update="" />
 				</h:panelGrid>
