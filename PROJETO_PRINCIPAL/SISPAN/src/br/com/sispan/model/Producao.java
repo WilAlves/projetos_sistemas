@@ -1,11 +1,14 @@
 package br.com.sispan.model;
 
 import java.util.List;
+import java.util.ArrayList;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import br.com.sispan.interfaces.Bean;
@@ -28,8 +31,9 @@ public class Producao implements Bean {
 	@Column(name="Produto_status", nullable = false, length = 255, unique = true)
 	private String Produto_status;
 	
-	/*@ManyToMany(mappedBy = "Producoes")
-	private List<Receita>Receita;*/
+	
+	@ManyToMany(mappedBy = "producoes")
+	private List<Receita> Receitas;
 	
 	@Override
 	public Long getId() {

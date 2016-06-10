@@ -24,10 +24,10 @@ public class Ingrediente implements Bean{
 	private Integer ingredientequantidade;
 	@Column(name="ingredientetipo", nullable = false, length = 255, unique = true)
 	private String ingredientetipo;
-	/*@Column(name="ReceitaIngrediente", nullable = false)
-	private Integer ReceitaIngrediente;
+	@Column(name="ReceitaIngrediente", nullable = false)
+	private Integer receitaingrediente;
 	@Column(name="ProducaoIngrediente", nullable = false)
-	private Integer ProducaoIngrediente;*/
+	private Integer producaoingrediente;
 	
 	@Override
 	public Long getId() {
@@ -64,20 +64,20 @@ public class Ingrediente implements Bean{
 		this.ingredientetipo = ingredientetipo;
 	}
 
-	/*public Integer getReceitaIngrediente() {
-		return ReceitaIngrediente;
+	public Integer getReceitaIngrediente() {
+		return receitaingrediente;
 	}
 
 	public void setReceitaIngrediente(Integer receitaIngrediente) {
-		ReceitaIngrediente = receitaIngrediente;
+		receitaingrediente = receitaIngrediente;
 	}
 
 	public Integer getProducaoIngrediente() {
-		return ProducaoIngrediente;
+		return producaoingrediente;
 	}
 
 	public void setProducaoIngrediente(Integer producaoIngrediente) {
-		ProducaoIngrediente = producaoIngrediente;
-	}*/
+		producaoingrediente = producaoIngrediente;
+	}
 
 }

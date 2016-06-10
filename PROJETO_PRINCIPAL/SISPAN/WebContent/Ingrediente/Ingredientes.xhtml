@@ -14,6 +14,13 @@
 										
 			   		  		<p:outputLabel value="Código" for="id" redered="#{ingredienteMB.ingrediente.id != null}" />
 							<p:inputText id="id" value="#{ingredienteMB.ingrediente.id}" redered="#{ingredienteMB.ingrediente.id != null}" readonly="true" />	   		  	
+							
+							<p:outputLabel value="Produçao" for="producaoIngrediente" redered="#{ingredienteMB.ingrediente.producaoIngrediente != null}" />
+							<p:inputText id="producaoIngrediente" value="#{ingredienteMB.ingrediente.producaoIngrediente}" redered="#{ingredienteMB.ingrediente.producaoIngrediente != null}" />
+							
+							<p:outputLabel value="Receita" for="receitaIngrediente" redered="#{ingredienteMB.ingrediente.receitaIngrediente != null}" />
+							<p:inputText id="receitaIngrediente" value="#{ingredienteMB.ingrediente.receitaIngrediente}" redered="#{ingredienteMB.ingrediente.receitaIngrediente != null}" /> 
+							
 							<p:outputLabel value="Descrição"/><p:inputText value="#{ingredienteMB.ingrediente.ingredientedescricao}" required="true"/>
 				          	<p:outputLabel value="Tipo" /><p:inputText value="#{ingredienteMB.ingrediente.ingredientetipo}" required="true"/>
 				          	<p:outputLabel value="Quantidade"/><p:inputText value="#{ingredienteMB.ingrediente.ingredientequantidade}" required="true"/>
@@ -35,7 +42,8 @@
 					<p:column headerText="Descrição"><h:outputText value="#{ingrediente.ingredientedescricao}" /></p:column>
 					<p:column headerText="Tipo"><h:outputText value="#{ingrediente.ingredientetipo}" /></p:column>
 					<p:column headerText="Quantidade"><h:outputText value="#{ingrediente.ingredientequantidade}" /></p:column>
-					
+					<p:column headerText="Receita"><h:outputText value="#{ingrediente.receitaIngrediente}" /></p:column>
+					<p:column headerText="Produção"><h:outputText value="#{ingrediente.producaoIngrediente}" /></p:column> 					
 						<p:column style="width:32px;text-align: center">
 							<p:commandButton update="lista" icon="ui-icon-circle-close" title="View" action="#{ingredienteMB.excluir()}">
 								<f:setPropertyActionListener value="#{ingrediente}" target="#{ingredienteMB.ingrediente}" />
@@ -48,12 +56,7 @@
 </html>
 
 
-			<!-- <p:outputLabel value="Código Produçao" for="id" redered="#{producaoMB.producao.id != null}" />
-							<p:inputText id="id" value="#{producaoMB.producao.id}" redered="#{producaoMB.producao.id != null}" readonly="true" />
-							<p:outputLabel value="Código Receita" for="id" redered="#{receitaMB.receita.id != null}" />
-							<p:inputText id="Receitaid" value="#{receitaMB.receita.id}" redered="#{receitaMB.receita.id != null}" readonly="true" /> -->
+			
 							
 							
 							
-							<!-- <p:column headerText="Codigo Receita"><h:outputText value="#{receita.id}" /></p:column>
-					<p:column headerText="Codigo Produção"><h:outputText value="#{producao.id}" /></p:column> -->

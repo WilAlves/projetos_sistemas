@@ -1,5 +1,8 @@
 package br.com.sispan.model;
 
+import java.util.List;
+import java.util.ArrayList;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,10 +30,12 @@ public class Receita implements Bean {
 	@Column(name="receitamodofazer", nullable = false, length = 255, unique = true)
 	private String receitamodofazer;
 	
-	/*@ManyToMany
-	@JoinTable(name= "Ingrediente",joinColumns = @JoinColumn(name= "receitaid"),
-	inverseJoinColumns = @JoinColumn(name = "Produto_id"))*/
-	
+	@ManyToMany
+	@JoinTable(name= "Ingrediente",joinColumns = {@JoinColumn(name= "receita_id")},
+	inverseJoinColumns = {@JoinColumn(name = "produto_id")})
+	private List<Producao> producoes;
+
+
 	@Override
 	public Long getId() {
 		// TODO Auto-generated method stub

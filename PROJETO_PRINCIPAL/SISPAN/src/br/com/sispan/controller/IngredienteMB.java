@@ -18,8 +18,7 @@ package br.com.sispan.controller;
 		private static final long serialVersionUID = 2194919161836237152L;
 		private Ingrediente ingrediente = new Ingrediente();
 		private List<Ingrediente> listaIngredientes = new ArrayList();
-		
-		
+				
 		public Ingrediente getIngrediente() {
 			return ingrediente;
 		}
