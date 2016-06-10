@@ -30,7 +30,7 @@
         </h:form>
         </ui:define>
         
-                 <ui:define name="footer">
+        <ui:define name="footer">
 		<h:form id="lista">
 			<p:dataTable value="#{clienteMB.listaClientes}" var="plano"	selectionMode="single" selection="#{clienteMB.cliente}" rowKey="#{plano}">
 				<p:ajax event="rowSelect" update="cadastro" />

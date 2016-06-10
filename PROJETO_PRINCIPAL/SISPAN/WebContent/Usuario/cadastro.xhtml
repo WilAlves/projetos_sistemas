@@ -9,7 +9,9 @@
         <fieldset>
         <legend>Cadastro de Usuario</legend>
           <p:panelGrid columns="4">
- 				<p:outputLabel value="ID_Usuario" for="id" redered="#{usuarioMB.usuario.id != null}" />
+ 				
+ 				<p:outputLabel value="ID Usuario" for="id" redered="#{usuarioMB.usuario.id != null}" />
+
           		<p:inputText id="id" value="#{usuarioMB.usuario.id}" redered="#{usuarioMB.usuario.id != null}" readonly="true" size="10"/> 				
  
           		<p:outputLabel value="Login (e-mail)" />
@@ -43,8 +45,10 @@
         </fieldset>
         </h:form>
     	</ui:define>
-         <ui:define name="footer">
-		<h:form id="lista">
+
+        <ui:define name="footer"> 
+       	<h:form id="lista">
+
 			<p:dataTable value="#{usuarioMB.listaUsuarios}" var="plano"	selectionMode="single" selection="#{usuarioMB.usuario}" rowKey="#{plano}">
 				<p:ajax event="rowSelect" update="cadastro" />
 				<p:column headerText="ID"><h:outputText value="#{plano.id}" /></p:column>

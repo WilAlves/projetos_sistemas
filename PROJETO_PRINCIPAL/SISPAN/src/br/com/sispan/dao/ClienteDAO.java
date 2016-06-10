@@ -12,7 +12,7 @@ public class ClienteDAO extends GenericDAO {
 	}
 
 	public Cliente consultar(Long id){
-		return entityManager().getReference(Cliente.class, id);
+		return entityManager.getReference(Cliente.class, id);
 	}
 
 	private EntityManager entityManager() {
