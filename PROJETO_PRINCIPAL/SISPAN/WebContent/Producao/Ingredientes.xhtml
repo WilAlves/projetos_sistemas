@@ -34,7 +34,7 @@
 					<p:column headerText="Tipo"><h:outputText value="#{ingredienteMB.ingrediente.tipo}" /></p:column>
 					<p:column headerText="Quantidade"><h:outputText value="#{ingredienteMB.ingrediente.quantidade}" /></p:column>
 						<p:column style="width:32px;text-align: center">
-							<p:commandButton update="lista" icon="ui-icon-search" title="View" action="#{ingredienteMB.excluir()}">
+							<p:commandButton update="lista" icon="ui-icon-circle-close" title="View" action="#{ingredienteMB.excluir()}">
 								<f:setPropertyActionListener value="#{ingredientes}" target="#{ingredienteMB.ingrediente}" />
 							</p:commandButton>
 						</p:column>

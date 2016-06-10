@@ -32,7 +32,7 @@
 					<p:column headerText="Quantidade"><h:outputText value="#{producao.produto_quantidade}" /></p:column>
 					<p:column headerText="Status"><h:outputText value="#{producao.produto_status}" /></p:column>
 						<p:column style="width:32px;text-align: center">
-							<p:commandButton update="lista" icon="ui-icon-search" title="View" action="#{producaoMB.excluir()}">
+							<p:commandButton update="lista" icon="ui-icon-circle-close" title="View" action="#{producaoMB.excluir()}">
 								<f:setPropertyActionListener value="#{producao}" target="#{producaoMB.producao}" />
 							</p:commandButton>
 						</p:column>
