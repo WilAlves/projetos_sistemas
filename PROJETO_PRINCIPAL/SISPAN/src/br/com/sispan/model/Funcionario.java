@@ -25,17 +25,17 @@ public class Funcionario implements Bean {
 	@Column(name="id_funcionario")
 	private Long id;
 	
-	@Column(name="matricula_funcionario")
-	private String matriculaFuncionario;
+	@Column(name="matricula_funcionario", nullable = false, length = 8, unique = true)
+	private Integer matriculaFuncionario;
 	
-	@Column(name="cargo_funcionario")
+	@Column(name="cargo_funcionario", nullable = false, length = 50, unique = true)
 	private String cargoFuncionario;
 		
-	@Column(name="ctps_funcionario")
-	private String ctpsFuncionario;
+	@Column(name="ctps_funcionario", nullable = false, length = 10, unique = true)
+	private Integer ctpsFuncionario;
 	
-	@Column(name="rg_funcionario")
-	private String rgFuncionario;
+	@Column(name="rg_funcionario", nullable = false, length = 12, unique = true)
+	private Integer rgFuncionario;
 	
 	
 	@OneToOne(cascade=CascadeType.REFRESH)
@@ -52,11 +52,11 @@ public class Funcionario implements Bean {
 		this.id = id;
 	}
 
-	public String getMatriculaFuncionario() {
+	public Integer getMatriculaFuncionario() {
 		return matriculaFuncionario;
 	}
 
-	public void setMatriculaFuncionario(String matriculaFuncionario) {
+	public void setMatriculaFuncionario(Integer matriculaFuncionario) {
 		this.matriculaFuncionario = matriculaFuncionario;
 	}
 
@@ -68,19 +68,19 @@ public class Funcionario implements Bean {
 		this.cargoFuncionario = cargoFuncionario;
 	}
 
-	public String getCtpsFuncionario() {
+	public Integer getCtpsFuncionario() {
 		return ctpsFuncionario;
 	}
 
-	public void setCtpsFuncionario(String ctpsFuncionario) {
+	public void setCtpsFuncionario(Integer ctpsFuncionario) {
 		this.ctpsFuncionario = ctpsFuncionario;
 	}
 
-	public String getRgFuncionario() {
+	public Integer getRgFuncionario() {
 		return rgFuncionario;
 	}
 
-	public void setRgFuncionario(String rgFuncionario) {
+	public void setRgFuncionario(Integer rgFuncionario) {
 		this.rgFuncionario = rgFuncionario;
 	}
 

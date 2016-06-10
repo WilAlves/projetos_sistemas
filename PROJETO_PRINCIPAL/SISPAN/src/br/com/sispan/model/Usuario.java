@@ -21,28 +21,28 @@ public class Usuario implements Bean {
 	@Column(name="id_usuario")
 	private Long id;
 	
-	@Column(name="login_usuario")
+	@Column(name="login_usuario", nullable = false, length = 8, unique = true)
 	private String loginUsuario;
 	
-	@Column(name="senha_usuario")
+	@Column(name="senha_usuario", nullable = false, length = 6, unique = true)
 	private String senhaUsuario;
 	
-	@Column(name="Nome_usuario")
+	@Column(name="Nome_usuario", nullable = false, length = 255, unique = false)
 	private String nomeUsuario;
 	
-	@Column(name="cep_usuario")
+	@Column(name="cep_usuario", nullable = false, length = 9, unique = false)
 	private String cepUsuario;
 	
-	@Column(name="endereco_usuario")
+	@Column(name="endereco_usuario", nullable = false, length = 255, unique = false)
 	private String enderecoUsuario;
 	
-	@Column(name="fone_usuario")
-	private String foneUsuario;
+	@Column(name="fone_usuario", nullable = false, length = 9, unique = true)
+	private Integer foneUsuario;
 	
-	@Column(name="cpf_usuario")
+	@Column(name="cpf_usuario", nullable = false, length = 11, unique = true)
 	private String cpfUsuario;
 	
-	@Column(name="dataNascimento_usuario")
+	@Column(name="dataNascimento_usuario", nullable = false, length = 10, unique = false)
 	private String dataNascimentoUsuario;
 
 	public Long getId() {
@@ -101,11 +101,11 @@ public class Usuario implements Bean {
 		this.enderecoUsuario = enderecoUsuario;
 	}
 
-	public String getFoneUsuario() {
+	public Integer getFoneUsuario() {
 		return foneUsuario;
 	}
 
-	public void setFoneUsuario(String foneUsuario) {
+	public void setFoneUsuario(Integer foneUsuario) {
 		this.foneUsuario = foneUsuario;
 	}
 

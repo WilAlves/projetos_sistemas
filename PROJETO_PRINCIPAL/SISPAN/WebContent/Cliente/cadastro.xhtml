@@ -9,7 +9,9 @@
         <fieldset>
         <legend>Cadastro de Clientes</legend>
         	<p:panelGrid columns="2">
-        	
+
+ 			<p:outputLabel value="ID Cliente" for="id" redered="#{clienteMB.cliente.id != null}" />
+          	<p:inputText id="id" value="#{clienteMB.cliente.id}" redered="#{clienteMB.cliente.id != null}" readonly="true" size="10"/>         	
         	      	
         	<p:outputLabel value="Numero do Cartão de Crédito" />
           	<p:inputText value="#{clienteMB.cliente.cartaoCliente}" />
@@ -20,7 +22,7 @@
 			<p:outputLabel value="Chave de Segurança" />
           	<p:inputText value="#{clienteMB.cliente.codcartaoCliente}" />
 			          	
-        	<p:commandButton action="#{clienteMB.salvar}" value="Salvar" update="@this" />
+        	<p:commandButton action="#{clienteMB.salvar}" value="Salvar" update="cadastro lista" />
     	          	          	
         </p:panelGrid>
          
@@ -28,7 +30,7 @@
         </h:form>
         </ui:define>
         
-                 <ui:define name="footer">
+        <ui:define name="footer">
 		<h:form id="lista">
 			<p:dataTable value="#{clienteMB.listaClientes}" var="plano"	selectionMode="single" selection="#{clienteMB.cliente}" rowKey="#{plano}">
 				<p:ajax event="rowSelect" update="cadastro" />
@@ -36,8 +38,8 @@
 				<p:column headerText="Cartão"><h:outputText value="#{plano.cartaoCliente}" /></p:column>
 				<p:column headerText="Validade do Cartão"><h:outputText value="#{plano.validadecartaoCliente}" /></p:column>
 				<p:column headerText="Código"><h:outputText value="#{plano.codcartaoCliente}" /></p:column>
-				<p:column style="width:32px;text-align: center">
-					<p:commandButton update="lista" icon="ui-icon-search" title="View" action="#{clienteMB.excluir()}" >
+				<p:column style="width:32px;text-align: center;font-size: 0.5em">
+					<p:commandButton update="lista" icon="ui-icon-circle-close" title="View" action="#{clienteMB.excluir()}" >
 						<f:setPropertyActionListener value="#{plano}" target="#{clienteMB.cliente}" />
 					</p:commandButton>
 				</p:column>

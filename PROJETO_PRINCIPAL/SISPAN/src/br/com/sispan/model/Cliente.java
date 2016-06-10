@@ -20,13 +20,13 @@ public class Cliente implements Bean {
 	@Column(name="id_cliente")
 	private Long id;
 	
-	@Column(name="cartao_cliente")
+	@Column(name="cartao_cliente", nullable = false, length = 16, unique = true)
 	private String cartaoCliente;
 	
-	@Column(name="validadecartao_cliente")
+	@Column(name="validadecartao_cliente", nullable = false, length = 10, unique = true)
 	private String validadecartaoCliente;
 	
-	@Column(name="codcartao_cliente")
+	@Column(name="codcartao_cliente", nullable = false, length = 3, unique = true)
 	private String codcartaoCliente;
 
 	public Long getId() {
