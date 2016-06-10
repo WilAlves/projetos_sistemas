@@ -10,8 +10,7 @@
         <legend>Cadastro de Usuario</legend>
           <p:panelGrid columns="4">
  				
-
- 				<p:outputLabel value="ID_Usuario" for="id" redered="#{usuarioMB.usuario.id != null}" />
+ 				<p:outputLabel value="ID Usuario" for="id" redered="#{usuarioMB.usuario.id != null}" />
           		<p:inputText id="id" value="#{usuarioMB.usuario.id}" redered="#{usuarioMB.usuario.id != null}" readonly="true" size="10"/> 				
  
           		<p:outputLabel value="Login (e-mail)" />
@@ -46,9 +45,8 @@
         </h:form>
     	</ui:define>
 
-    	
-         <ui:define name="footer">
-		<h:form id="lista">
+        <ui:define name="footer"> 
+       	<h:form id="lista">
 			<p:dataTable value="#{usuarioMB.listaUsuarios}" var="plano"	selectionMode="single" selection="#{usuarioMB.usuario}" rowKey="#{plano}">
 				<p:ajax event="rowSelect" update="cadastro" />
 				<p:column headerText="ID"><h:outputText value="#{plano.id}" /></p:column>
@@ -61,7 +59,6 @@
 				<p:column headerText="Data Nasc"><h:outputText value="#{plano.dataNascimentoUsuario}" /></p:column>
 				<p:column style="width:32px;text-align: center;font-size: 0.5em">
 					<p:commandButton update="lista" icon="ui-icon-circle-close" title="View" action="#{usuarioMB.excluir()}" >
-
 						<f:setPropertyActionListener value="#{plano}" target="#{usuarioMB.usuario}" />
 					</p:commandButton>
 				</p:column>

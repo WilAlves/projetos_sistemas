@@ -2,11 +2,8 @@ package br.com.sispan.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.faces.bean.ManagedBean;
-
 import javax.faces.bean.ViewScoped;
-
 import br.com.sispan.interfaces.Bean;
 import br.com.sispan.model.Cliente;
 
