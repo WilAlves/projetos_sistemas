@@ -30,11 +30,9 @@ public class Receita implements Bean {
 	@Column(name="receitamodofazer", nullable = false, length = 255, unique = true)
 	private String receitamodofazer;
 	
-	@ManyToMany
-	@JoinTable(name= "Ingrediente",joinColumns = {@JoinColumn(name= "receita_id")},
-	inverseJoinColumns = {@JoinColumn(name = "produto_id")})
+	@ManyToMany(mappedBy = "receitas")
 	private List<Producao> producoes;
-
+	
 
 	@Override
 	public Long getId() {

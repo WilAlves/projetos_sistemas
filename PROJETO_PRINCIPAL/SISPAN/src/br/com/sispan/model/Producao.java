@@ -31,9 +31,10 @@ public class Producao implements Bean {
 	@Column(name="Produto_status", nullable = false, length = 255, unique = true)
 	private String Produto_status;
 	
-	
-	@ManyToMany(mappedBy = "producoes")
-	private List<Receita> Receitas;
+	@ManyToMany
+	@JoinTable(name= "Ingrediente",joinColumns = {@JoinColumn(name= "ProducaoIngrediente")},
+	inverseJoinColumns = {@JoinColumn(name = "ReceitaIngrediente")})
+	private List<Receita> receitas;
 	
 	@Override
 	public Long getId() {

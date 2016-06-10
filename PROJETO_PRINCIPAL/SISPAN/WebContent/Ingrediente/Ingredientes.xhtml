@@ -15,9 +15,11 @@
 			   		  		<p:outputLabel value="Código" for="id" redered="#{ingredienteMB.ingrediente.id != null}" />
 							<p:inputText id="id" value="#{ingredienteMB.ingrediente.id}" redered="#{ingredienteMB.ingrediente.id != null}" readonly="true" />	   		  	
 							
+						
+							
 							<p:outputLabel value="Produçao" for="producaoIngrediente" redered="#{ingredienteMB.ingrediente.producaoIngrediente != null}" />
 							<p:inputText id="producaoIngrediente" value="#{ingredienteMB.ingrediente.producaoIngrediente}" redered="#{ingredienteMB.ingrediente.producaoIngrediente != null}" />
-							
+						 	
 							<p:outputLabel value="Receita" for="receitaIngrediente" redered="#{ingredienteMB.ingrediente.receitaIngrediente != null}" />
 							<p:inputText id="receitaIngrediente" value="#{ingredienteMB.ingrediente.receitaIngrediente}" redered="#{ingredienteMB.ingrediente.receitaIngrediente != null}" /> 
 							
@@ -55,7 +57,12 @@
 	</ui:decorate>	
 </html>
 
-
+<!-- 
+						<h:selectOneMenu value="Produçao" for="producaoIngrediente" redered="#{ingredienteMB.ingrediente.producaoIngrediente != null}">
+							<f:selectItem itemValue="" itemLabel="Selecione..." />
+							<f:selectItem itemValue="#{ingrediente.producaoIngrediente}" itemLabel="#{ingrediente.producaoIngrediente}" />
+				
+						</h:selectOneMenu> -->
 			
 							
 							
