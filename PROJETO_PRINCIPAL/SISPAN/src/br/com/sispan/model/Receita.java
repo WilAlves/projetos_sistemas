@@ -33,7 +33,6 @@ public class Receita implements Bean {
 	@ManyToMany(mappedBy = "receitas")
 	private List<Producao> producoes;
 	
-
 	@Override
 	public Long getId() {
 		// TODO Auto-generated method stub

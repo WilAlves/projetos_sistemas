@@ -31,11 +31,13 @@ public class Producao implements Bean {
 	@Column(name="Produto_status", nullable = false, length = 255, unique = true)
 	private String Produto_status;
 	
+
 	@ManyToMany
 	@JoinTable(name= "Ingrediente",joinColumns = {@JoinColumn(name= "ProducaoIngrediente")},
 	inverseJoinColumns = {@JoinColumn(name = "ReceitaIngrediente")})
 	private List<Receita> receitas;
-	
+
+
 	@Override
 	public Long getId() {
 		// TODO Auto-generated method stub
