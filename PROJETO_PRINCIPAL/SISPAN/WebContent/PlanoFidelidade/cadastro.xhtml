@@ -5,137 +5,140 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <ui:decorate template="/tema/padrao.xhtml">
 	<ui:define name="centro">
-		<h:form id="cadastro">
-			<p:panelGrid style="width:100%">
-				<f:facet name="header">
+		<p:panelGrid columns="1" columnClasses="ui-grid-col-12">
+			<h:form id="cadastro">
+				<p:panelGrid style="width:100%">
+					<f:facet name="header">
+						<p:row>
+							<p:column colspan="9">Cadastro de planos de fidelidade</p:column>
+						</p:row>
+					</f:facet>
 					<p:row>
-						<p:column colspan="9">Cadastro de planos de fidelidade</p:column>
+						<p:column>Código do plano</p:column>
+						<p:column colspan="3">Nome do plano</p:column>
+						<p:column>Valor em compras</p:column>
+						<p:column>Equivalente em pontos</p:column>
 					</p:row>
-				</f:facet>
-				<p:row>
-					<p:column>Código do plano</p:column>
-					<p:column colspan="3">Nome do plano</p:column>
-					<p:column>Valor em compras</p:column>
-					<p:column>Equivalente em pontos</p:column>
-				</p:row>
-				<p:row>
-					<p:column>
-						<p:inputText id="id"
-							value="#{planoFidelidadeMB.planoFidelidade.id}"
-							redered="#{planoFidelidadeMB.planoFidelidade.id != null}"
-							readonly="true" />
-					</p:column>
-					<p:column colspan="3">
-						<p:inputText id="nome"
-							value="#{planoFidelidadeMB.planoFidelidade.nomePlano}" />
-					</p:column>
-					<p:column>
-						<p:outputLabel value="
+					<p:row>
+						<p:column>
+							<p:inputText id="id"
+								value="#{planoFidelidadeMB.planoFidelidade.id}"
+								redered="#{planoFidelidadeMB.planoFidelidade.id != null}"
+								readonly="true" />
+						</p:column>
+						<p:column colspan="3">
+							<p:inputText id="nome"
+								value="#{planoFidelidadeMB.planoFidelidade.nomePlano}" />
+						</p:column>
+						<p:column>
+							<p:outputLabel value="
 							Conversão de pontos" />
-					</p:column>
-					<p:column>
-						<p:spinner
-							value="#{planoFidelidadeMB.planoFidelidade.valorAplicavel}" />
-					</p:column>
-					<p:column>
-						<p:inputText
-							value="#{planoFidelidadeMB.planoFidelidade.pontoAplicavel}" />
-					</p:column>
-				</p:row>
-				<p:row>
-					<p:column colspan="4">Metas</p:column>
-					<p:column colspan="5">Premiações/Produtos</p:column>
-				</p:row>
-				<p:row>
-					<p:column colspan="2">Meta por periodo</p:column>
-					<p:column colspan="2">Periodo para meta</p:column>
-					<p:column colspan="5">
-						<p:autoComplete id="event" value="#{produtoMB.produto}"
-							completeMethod="#{produtoMB.autoCompleteProdutos}"
-							converter="produtoConverter">
-							<p:ajax event="itemSelect"
-								listener="#{planoFidelidadeMB.onItemSelect}" update="premios" />
-						</p:autoComplete>
-					</p:column>
-				</p:row>
-				<p:row>
-					<p:column>Em pontos</p:column>
-					<p:column>
-						<p:spinner value="#{planoFidelidadeMB.planoFidelidade.metaPontos}" />
-					</p:column>
-					<p:column>Em dias</p:column>
-					<p:column>
-						<p:spinner
-							value="#{planoFidelidadeMB.planoFidelidade.metaPeriodo}" />
-					</p:column>
-					<p:column colspan="5" rowspan="5">
-						<p:dataTable id="premios"
-							value="#{planoFidelidadeMB.planoFidelidade.listaPremiacoes}"
-							var="premio" type="ordered" rowKey="#{premio}">
-							
-							<p:column headerText="Descrição">
-								<p:outputLabel value="#{premio.descricao}" />
-							</p:column>
-							<p:column headerText="">
-								<p:commandButton update="cadastro premios"
-									action="#{planoFidelidadeMB.planoFidelidade.excluirPremio}"
-									icon="ui-icon-trash" title="Remover">
-									<f:setPropertyActionListener value="#{premio}"
-										target="#{planoFidelidadeMB.planoFidelidade.premioRemovido}" />
-								</p:commandButton>
-							</p:column>
-						</p:dataTable>
-					</p:column>
-				</p:row>
-				<p:row>
-					<p:column colspan="4">
-						<p:outputLabel value="Meta upgrade" />
-					</p:column>
-				</p:row>
-				<p:row>
-					<p:column colspan="3">
-						<p:outputLabel value="Metas batidas sequencialmente" />
-					</p:column>
-					<p:column>
-						<p:spinner min="0"
-							value="#{planoFidelidadeMB.planoFidelidade.metaUpgrade}" />
-					</p:column>
-				</p:row>
-				<p:row>
-					<p:column colspan="3">
-						<p:outputLabel value="Upgrade por pontuação" />
-					</p:column>
-					<p:column>
-						<p:spinner min="0"
-							value="#{planoFidelidadeMB.planoFidelidade.metaUpgradePontos}" />
-					</p:column>
-				</p:row>
-				<p:row>
-					<p:column colspan="4">
-						<h:outputText value="Condição de downgrade " />
-						<p:selectBooleanCheckbox
-							value="#{planoFidelidadeMB.planoFidelidade.downgradable}">
-							<!--   -->
-						</p:selectBooleanCheckbox>
-					</p:column>
-				</p:row>
-				<p:row>
-					<p:column colspan="3">
-						<h:outputText value="Metas não batidas" />
-					</p:column>
-					<p:column>
-						<p:spinner min="0"
-							value="#{planoFidelidadeMB.planoFidelidade.metaDowngrade}" />
-					</p:column>
-					<p:column colspan="4">
-						<p:commandButton action="#{planoFidelidadeMB.novo}" value="Novo"
-							update="cadastro" />
-						<p:commandButton action="#{planoFidelidadeMB.salvar}"
-							value="Salvar" update="cadastro lista" />
-					</p:column>
-				</p:row>
-			</p:panelGrid>
-		</h:form>
+						</p:column>
+						<p:column>
+							<p:spinner
+								value="#{planoFidelidadeMB.planoFidelidade.valorAplicavel}" />
+						</p:column>
+						<p:column>
+							<p:inputText
+								value="#{planoFidelidadeMB.planoFidelidade.pontoAplicavel}" />
+						</p:column>
+					</p:row>
+					<p:row>
+						<p:column colspan="4">Metas</p:column>
+						<p:column colspan="5">Premiações/Produtos</p:column>
+					</p:row>
+					<p:row>
+						<p:column colspan="2">Meta por periodo</p:column>
+						<p:column colspan="2">Periodo para meta</p:column>
+						<p:column colspan="5">
+							<p:autoComplete id="event" value="#{produtoMB.produto}"
+								completeMethod="#{produtoMB.autoCompleteProdutos}"
+								converter="produtoConverter">
+								<p:ajax event="itemSelect"
+									listener="#{planoFidelidadeMB.onItemSelect}" update="premios" />
+							</p:autoComplete>
+						</p:column>
+					</p:row>
+					<p:row>
+						<p:column>Em pontos</p:column>
+						<p:column>
+							<p:spinner
+								value="#{planoFidelidadeMB.planoFidelidade.metaPontos}" />
+						</p:column>
+						<p:column>Em dias</p:column>
+						<p:column>
+							<p:spinner
+								value="#{planoFidelidadeMB.planoFidelidade.metaPeriodo}" />
+						</p:column>
+						<p:column colspan="5" rowspan="5">
+							<p:dataTable id="premios"
+								value="#{planoFidelidadeMB.planoFidelidade.listaPremiacoes}"
+								var="premio" type="ordered" rowKey="#{premio}">
+
+								<p:column headerText="Descrição">
+									<p:outputLabel value="#{premio.descricao}" />
+								</p:column>
+								<p:column headerText="">
+									<p:commandButton update="cadastro premios"
+										action="#{planoFidelidadeMB.planoFidelidade.excluirPremio}"
+										icon="ui-icon-trash" title="Remover">
+										<f:setPropertyActionListener value="#{premio}"
+											target="#{planoFidelidadeMB.planoFidelidade.premioRemovido}" />
+									</p:commandButton>
+								</p:column>
+							</p:dataTable>
+						</p:column>
+					</p:row>
+					<p:row>
+						<p:column colspan="4">
+							<p:outputLabel value="Meta upgrade" />
+						</p:column>
+					</p:row>
+					<p:row>
+						<p:column colspan="3">
+							<p:outputLabel value="Metas batidas sequencialmente" />
+						</p:column>
+						<p:column>
+							<p:spinner min="0"
+								value="#{planoFidelidadeMB.planoFidelidade.metaUpgrade}" />
+						</p:column>
+					</p:row>
+					<p:row>
+						<p:column colspan="3">
+							<p:outputLabel value="Upgrade por pontuação" />
+						</p:column>
+						<p:column>
+							<p:spinner min="0"
+								value="#{planoFidelidadeMB.planoFidelidade.metaUpgradePontos}" />
+						</p:column>
+					</p:row>
+					<p:row>
+						<p:column colspan="4">
+							<h:outputText value="Condição de downgrade " />
+							<p:selectBooleanCheckbox
+								value="#{planoFidelidadeMB.planoFidelidade.downgradable}">
+								<!--   -->
+							</p:selectBooleanCheckbox>
+						</p:column>
+					</p:row>
+					<p:row>
+						<p:column colspan="3">
+							<h:outputText value="Metas não batidas" />
+						</p:column>
+						<p:column>
+							<p:spinner min="0"
+								value="#{planoFidelidadeMB.planoFidelidade.metaDowngrade}" />
+						</p:column>
+						<p:column colspan="4">
+							<p:commandButton action="#{planoFidelidadeMB.novo}" value="Novo"
+								update="cadastro" />
+							<p:commandButton action="#{planoFidelidadeMB.salvar}"
+								value="Salvar" update="cadastro lista" />
+						</p:column>
+					</p:row>
+				</p:panelGrid>
+			</h:form>
+		</p:panelGrid>
 	</ui:define>
 	<ui:define name="footer">
 		<h:form id="lista">

@@ -10,22 +10,24 @@
 	<title>SISPAN - v1.0</title>
 </h:head>
 <h:body>
-	<div align="center">
+	<div class="ui-fluid">
 		<p:ajaxStatus onstart="PF('bui').show()" oncomplete="PF('bui').hide()"></p:ajaxStatus>
 		<p:blockUI block="block" widgetVar="bui">
-			<h:graphicImage width="100%" url="/resources/images/loader.gif" />
+			<h:graphicImage url="/resources/images/loader.gif" />
 		</p:blockUI>
 		<p:growl id="growl" showDetail="true" autoUpdate="true" />
-		<p:layout style="width:90%; min-height:650px">
-			<p:layoutUnit position="north" size="140">
+		<p:panelGrid columns="1" columnClasses="ui-grid-col-12" layout="grid"
+			styleClass="ui-panelgrid-blank">
+			<p:panelGrid columns="1" columnClasses="ui-grid-col-12" layout="grid"
+				styleClass="ui-panelgrid-blank">
 				<h:graphicImage width="100%" height="77"
 					url="/resources/images/banner_sispan.png" />
-				<!-- 	<p:outputLabel>HEADER</p:outputLabel> -->
 				<p:breadCrumb>
 					<p:menuitem value="Categories" url="/index.xhtml" />
 				</p:breadCrumb>
-			</p:layoutUnit>
-			<p:layoutUnit position="west" size="250">
+			</p:panelGrid>
+			<p:panelGrid columns="2" columnClasses="ui-grid-col-3,ui-grid-col-9"
+				layout="grid" styleClass="ui-panelgrid-blank">
 				<ui:insert name="menu">
 					<h:form>
 						<p:menu style="width:90%">
@@ -59,15 +61,15 @@
 						</p:menu>
 					</h:form>
 				</ui:insert>
-			</p:layoutUnit>
-			<p:layoutUnit position="center" id="block">
-				<ui:insert name="centro"></ui:insert>
-			</p:layoutUnit>
-			<p:layoutUnit position="south" size="100">
-				<!--<p:outputLabel>FOOTER</p:outputLabel>-->
+				<div id="block">
+					<ui:insert name="centro"></ui:insert>
+				</div>
+			</p:panelGrid>
+			<p:panelGrid columns="1" columnClasses="ui-grid-col-12" layout="grid"
+				styleClass="ui-panelgrid-blank">
 				<ui:insert name="footer"></ui:insert>
-			</p:layoutUnit>
-		</p:layout>
+			</p:panelGrid>
+		</p:panelGrid>
 	</div>
 </h:body>
 </html>
