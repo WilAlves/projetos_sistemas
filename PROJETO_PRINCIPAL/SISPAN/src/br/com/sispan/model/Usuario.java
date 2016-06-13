@@ -121,7 +121,5 @@ public class Usuario implements Bean {
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
-	}
-	
-		
+	}		
 }
