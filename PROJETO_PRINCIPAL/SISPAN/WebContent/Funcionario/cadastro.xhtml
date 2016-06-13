@@ -1,0 +1,69 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+    <ui:decorate template="/tema/padrao.xhtml">
+        <ui:define name="centro">
+        <h:form id="cadastro">
+        <fieldset>
+        <legend>Cadastro de Funcionarios</legend>
+        	
+        	<p:panelGrid columns="1"> 
+        	
+        	<h:selectOneMenu>
+        	
+           	<f:selectItem itemLabel="Selecione o Usuario..." />
+        	<f:selectItems value="#{usuarioMB.listaUsuarios}" var="user" itemValue="#{user.id}" itemLabel="#{user.loginUsuario}" />
+        	
+        	</h:selectOneMenu>
+        	
+        	<p:panelGrid columns="2"> 
+        	
+        	<p:outputLabel value="ID Funcionario" for="id" redered="#{funcionarioMB.funcionario.id != null}" />
+          	<p:inputText id="id" value="#{funcionarioMB.funcionario.id}" redered="#{funcionarioMB.funcionario.id != null}" readonly="true" size="10"/> 
+        	        	        	
+        	<p:outputLabel value="Matricula" />
+          	<p:inputText value="#{funcionarioMB.funcionario.matriculaFuncionario}" />
+        	
+          	<p:outputLabel value="Cargo" />
+          	<p:inputText value="#{funcionarioMB.funcionario.cargoFuncionario}" />
+          	
+          	<p:outputLabel value="CTPS" />
+          	<p:inputText value="#{funcionarioMB.funcionario.ctpsFuncionario}" />
+          	
+          	<p:outputLabel value="RG" />
+          	<p:inputText value="#{funcionarioMB.funcionario.rgFuncionario}" />
+          	
+			<p:commandButton action="#{funcionarioMB.salvar}" value="Salvar" update="cadastro lista" /> 
+          	   	
+          	
+        </p:panelGrid>
+        </p:panelGrid>
+       
+    </fieldset>
+    </h:form>
+    </ui:define>
+        
+         <ui:define name="footer">
+		<h:form id="lista">
+			<p:dataTable value="#{funcionarioMB.listaFuncionarios}" var="plano"	selectionMode="single" selection="#{funcionarioMB.funcionario}" rowKey="#{plano}">
+				<p:ajax event="rowSelect" update="cadastro" />
+				<p:column headerText="ID"><h:outputText value="#{plano.id}" /></p:column>
+				<p:column headerText="Matricula"><h:outputText value="#{plano.matriculaFuncionario}" /></p:column>
+				<p:column headerText="Cargo"><h:outputText value="#{plano.cargoFuncionario}" /></p:column>
+				<p:column headerText="CTPS"><h:outputText value="#{plano.ctpsFuncionario}" /></p:column>
+				<p:column headerText="RG"><h:outputText value="#{plano.rgFuncionario}" /></p:column>
+				
+				<p:column style="width:32px;text-align: center;font-size: 0.5em">
+					<p:commandButton update="lista" icon="ui-icon-circle-close" title="View" action="#{funcionarioMB.excluir()}" >
+						<f:setPropertyActionListener value="#{plano}" target="#{funcionarioMB.funcionario}" />
+					</p:commandButton>
+				</p:column>
+			</p:dataTable>
+		</h:form>
+		</ui:define>    
+        
+        
+    </ui:decorate>
+</html>

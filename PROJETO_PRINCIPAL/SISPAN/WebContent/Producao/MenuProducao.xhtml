@@ -1,0 +1,40 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <ui:decorate template="/tema/padrao.xhtml">
+       
+       		<p:layoutUnit position="west" size="250">
+				<ui:insert name="menu">
+					<h:form>
+						<p:menu style="width:90%">
+							<p:submenu label="Menu">
+								<p:menuitem value="Login" action="/Usuario/login.xhtml"  icon="ui-icon-key" />
+								<p:menuitem value="Fazer meu cadastro" icon="ui-icon-contact" />
+								<p:menuitem value="Planos de fidelidade" url="/PlanoFidelidade/cadastro.xhtml" icon="ui-icon-contact" />
+								<p:menuitem value="Produção" url="/Producao/MenuProducao.xhtml" icon="ui-icon-contact" />
+							</p:submenu>
+						</p:menu>
+					</h:form>
+				</ui:insert>
+			</p:layoutUnit>
+			
+        
+        
+        <ui:define name="centro">
+        <h:form>
+        <fieldset>
+        <legend>Menu</legend>
+        			
+						<p:menu style="width:90%">
+							
+								<p:menuitem value="Produção" url="/Producao/cadastro.xhtml" icon="ui-icon-contact" />
+								<p:menuitem value="Receitas" url="/Producao/Receita.xhtml" icon="ui-icon-contact" />
+								<p:menuitem value="Ingredientes" url="/Producao/cadastro_Ingredientes.xhtml" icon="ui-icon-contact" />
+					  	</p:menu>
+					     
+   		</fieldset>
+        </h:form>
+        </ui:define>
+    </ui:decorate>
+</html>

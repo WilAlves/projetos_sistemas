@@ -1,0 +1,89 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:decorate template="/tema/padrao.xhtml">
+	<ui:define name="centro">
+		<h:form id="cadastro">
+			<p:panelGrid style="width:100%">
+				<f:facet name="header">
+					<p:row>
+						<p:column colspan="9">Cadastro de promoções</p:column>
+					</p:row>
+				</f:facet>
+				<p:row>
+					<p:column>Código da promoção</p:column>
+					<p:column colspan="6">Nome da promoção</p:column>
+				</p:row>
+				<p:row>
+					<p:column>
+						<p:inputText id="id" value="#{promocaoMB.promocao.id}"
+							redered="#{promocaoMB.promocao.id != null}" readonly="true" />
+					</p:column>
+					<p:column colspan="3">
+						<p:inputText id="nome" value="#{promocaoMB.promocao.nome}" />
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column>
+						<p:autoComplete id="event"
+							value="#{planoFidelidadeMB.planoFidelidade}"
+							completeMethod="#{planoFidelidadeMB.autoCompletePlanoFidelidade}" 
+							converter="planoConverter"	>
+							<p:ajax event="itemSelect" listener="#{promocaoMB.onItemSelect}" update="planos" />
+						</p:autoComplete>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column colspan="3" rowspan="5">
+						<p:dataTable id="planos"
+							value="#{promocaoMB.promocao.listaPlanos}"
+							var="plano" type="ordered" rowKey="#{plano}">
+							<p:column headerText="Descrição">
+								<p:outputLabel value="#{plano}" />
+							</p:column>
+							<p:column headerText="">
+								<p:commandButton update="cadastro planos"
+									action="#{planoFidelidadeMB.planoFidelidade.excluirPremio}"
+									icon="ui-icon-trash" title="Remover">
+									<f:setPropertyActionListener value="#{plano}"
+										target="#{promocaoMB.promocao.planoRemovido}" />
+								</p:commandButton>
+							</p:column>
+						</p:dataTable>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column colspan="3">
+						<p:commandButton action="#{promocaoMB.novo}" value="Novo"
+							update="cadastro" />
+						<p:commandButton action="#{promocaoMB.salvar}" value="Salvar"
+							update="cadastro lista" />
+					</p:column>
+				</p:row>
+			</p:panelGrid>
+		</h:form>
+	</ui:define>
+	<ui:define name="footer">
+		<h:form id="lista">
+			<p:dataTable value="#{promocaoMB.listaPromocoes}" var="promocao"
+				selectionMode="single" selection="#{promocaoMB.promocao}"
+				rowKey="#{promocao}">
+				<p:ajax event="rowSelect" update="cadastro" />
+				<p:column headerText="Nome da promoção">
+					<h:outputText value="#{promocao.nome}" />
+				</p:column>
+				<p:column style="width:32px;text-align: center">
+					<p:commandButton update="cadastro lista"
+						action="#{promocaoMB.excluir()}" icon="ui-icon-trash"
+						title="Remover">
+						<f:setPropertyActionListener value="#{promocao}"
+							target="#{promocaoMB.promocao}" />
+					</p:commandButton>
+				</p:column>
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+</ui:decorate>
+</html>
