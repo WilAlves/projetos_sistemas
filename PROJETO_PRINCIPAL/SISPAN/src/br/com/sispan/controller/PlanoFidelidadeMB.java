@@ -86,5 +86,4 @@ public class PlanoFidelidadeMB extends GenericMB {
 			lista.add(p);
 		}	 	
 	} 
-	
 }

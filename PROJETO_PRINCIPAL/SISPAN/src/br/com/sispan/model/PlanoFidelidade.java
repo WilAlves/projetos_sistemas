@@ -3,6 +3,7 @@ package br.com.sispan.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,6 +14,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+
+import org.hibernate.annotations.Cascade;
 
 import br.com.sispan.interfaces.Bean;
 
@@ -33,17 +36,18 @@ public class PlanoFidelidade implements Bean {
 	@Column(name = "nome_plano", nullable = false, length = 255, unique = true)
 	private String nomePlano;
 	@Column(name = "valor_aplicavel", precision = 4, nullable = false)
-	private Float valorAplicavel;
+	private Float valorAplicavel = 0.0f;
 	@Column(name = "ponto_aplicavel", precision = 0, nullable = false)
-	private Integer pontoAplicavel ;
+	private Integer pontoAplicavel = 0;
 	@Column(name = "meta_ponto", precision = 0, nullable = false)
-	private Integer metaPontos  ;
+	private Integer metaPontos = 0;
 	@Column(name = "meta_periodo", precision = 0, nullable = false)
-	private Integer metaPeriodo ;
+	private Integer metaPeriodo = 0;
 	@Column(name = "meta_upgrade", precision = 0, nullable = false)
-	private Integer metaUpgrade ;
+	private Integer metaUpgrade = -1;
 	@Column(name = "meta_upgrade_pontos", precision = 0, nullable = false)
-	private Integer metaUpgradePontos  ;
+	private Integer metaUpgradePontos = -1;
+
 	@Column(name = "meta_downgrade", precision = 0, nullable = true)
 	private Integer metaDowngrade = null;
 	@ManyToMany
@@ -146,7 +150,11 @@ public class PlanoFidelidade implements Bean {
 	public void setDowngradable(boolean downgradable) {
 		this.downgradable = downgradable;
 	}
-		
+	
+	public void excluirPremio(){
+		System.out.println("chamou");
+	}
+	
 	public Promocao getPromocao() {
 		return promocao;
 	}

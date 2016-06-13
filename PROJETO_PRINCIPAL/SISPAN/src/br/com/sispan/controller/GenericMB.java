@@ -31,10 +31,10 @@ public abstract class GenericMB implements Serializable {
 			setBean(b);
 		} catch (InstantiationException e) {
 			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage("Falha", "Novo(a) " + b.getClass().getSimpleName() + " nao pode ser instanciado."));
+					new FacesMessage("Falha", "Novo(a) " + b.getClass().getSimpleName() + " não pode ser instanciado."));
 		} catch (IllegalAccessException e) {
 			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage("Falha", "Novo(a) " + b.getClass().getSimpleName() + " nao pode ser instanciado."));
+					new FacesMessage("Falha", "Novo(a) " + b.getClass().getSimpleName() + " não pode ser instanciado."));
 		}
 	}
 

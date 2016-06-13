@@ -1,6 +1,5 @@
 package br.com.sispan.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -15,13 +14,8 @@ import br.com.sispan.model.Usuario;
 @ManagedBean
 public class UsuarioMB extends GenericMB {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -915511402250833703L;
 	private Usuario usuario = new Usuario();
-	private List<Usuario> listaUsuarios = new ArrayList();
-	
+
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
@@ -37,20 +31,6 @@ public class UsuarioMB extends GenericMB {
 	//	salvar();
 	}
 	 
-	@Override
-	public void setLista(List lista) {
-		System.out.println("Setando lista: ");
-		this.listaUsuarios = new ArrayList<Usuario>(lista);
-		
-	}	
-	
-	public List<Usuario> getListaUsuarios(){
-		return listaUsuarios;
-	}
-	
-	public void setListaUsuarios(List<Usuario> listaUsuarios){
-		this.listaUsuarios = listaUsuarios;
-}
 
 	@Override
 	protected Bean getBean() { // TODO Auto-generated method stub
@@ -62,5 +42,9 @@ public class UsuarioMB extends GenericMB {
 		this.setUsuario((Usuario) b);
 	}
 
+	@Override
+	public void setLista(List<Bean> lista) {
+		
+	}
 	
 }
