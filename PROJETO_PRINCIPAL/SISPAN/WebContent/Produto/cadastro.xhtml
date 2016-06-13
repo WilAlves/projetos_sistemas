@@ -16,7 +16,10 @@
 						<p:inputText value="#{produtoMB.produto.valor}" required="true" />
 					<p:outputLabel value="Quantidade" />
 						<p:inputText value="#{produtoMB.produto.quantidade}" required="true" />
-					<p:commandButton action="#{produtoMB.salvar()}" value="Salvar" update="cadastro lista" />
+						<h:panelGrid columns="2">
+					<p:commandButton action="#{produtoMB.salvar}" value="Salvar" update="cadastro lista" />
+					<p:commandButton action="#{produtoMB.novo}" value="Novo" update="cadastro" />
+					</h:panelGrid>
 				</h:panelGrid>
 			</p:panel>
 		</h:form>

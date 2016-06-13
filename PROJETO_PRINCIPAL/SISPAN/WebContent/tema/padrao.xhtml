@@ -33,12 +33,14 @@
 								<p:menuitem value="Login" action="/Usuario/login"
 									icon="ui-icon-key" />
 								<p:menuitem value="Fazer meu cadastro" icon="ui-icon-contact" />
+								<p:menuitem value="Cadastro Cliente"
+									url="/Cliente/cadastro.xhtml" icon="ui-icon-contact" />
+								<p:menuitem value="Produto" url="/Produto/cadastro.xhtml"
+									icon="ui-icon-contact" />
+								<p:menuitem value="Promoção"
+									url="/Promocao/cadastro.xhtml" icon="ui-icon-contact" />
 								<p:menuitem value="Planos de fidelidade"
 									url="/PlanoFidelidade/cadastro.xhtml" icon="ui-icon-contact" />
-								<p:menuitem value="Produto"
-									url="/Produto/cadastro.xhtml" icon="ui-icon-contact" />
-								<p:menuitem value="Fornecedor"
-									url="/Fornecedor/cadastro.xhtml" icon="ui-icon-contact" />
 							</p:submenu>
 						</p:menu>
 					</h:form>
@@ -47,8 +49,7 @@
 			<p:layoutUnit position="center" id="block">
 				<ui:insert name="centro"></ui:insert>
 			</p:layoutUnit>
-			<p:layoutUnit position="south" size="100">
-				<!--<p:outputLabel>FOOTER</p:outputLabel>-->
+			<p:layoutUnit position="south">
 				<ui:insert name="footer"></ui:insert>
 			</p:layoutUnit>
 		</p:layout>

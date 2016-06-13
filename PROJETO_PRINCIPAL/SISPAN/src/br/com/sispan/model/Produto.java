@@ -1,9 +1,14 @@
 package br.com.sispan.model;
+ 
+
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import br.com.sispan.interfaces.Bean;
@@ -26,14 +31,15 @@ public class Produto implements Bean {
 	private Long id;
 	
 	@Column(name = "descricao", nullable = false, length = 255, unique = true)
-	private String descricao;
+	private String descricao="";
 	
 	@Column(name = "valor", precision = 4, nullable = false)
 	private Float valor = 0.0f;
 	
 	@Column(name = "quantidade", precision = 0, nullable = false)
 	private Integer quantidade = 0;
-	
+	@ManyToMany(fetch=FetchType.LAZY,mappedBy="listaPremiacoes")
+	private List<PlanoFidelidade>  planos;
 	//Metodos de GET e SET...
 	public Long getId() {
 		// TODO Auto-generated method stub
@@ -59,5 +65,33 @@ public class Produto implements Bean {
 	}
 	public void setQuantidade(Integer quantidade) {
 		this.quantidade = quantidade;
+	}
+	
+	@Override
+	public String toString(){
+		return this.descricao;
+	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((descricao == null) ? 0 : descricao.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Produto other = (Produto) obj;
+		if (descricao == null) {
+			if (other.descricao != null)
+				return false;
+		} else if (!descricao.equals(other.descricao))
+			return false;
+		return true;
 	}
 }

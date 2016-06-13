@@ -5,8 +5,12 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+
+import org.primefaces.event.SelectEvent;
+
 import br.com.sispan.interfaces.Bean;
 import br.com.sispan.model.PlanoFidelidade;
+import br.com.sispan.model.Produto;
 
 @ViewScoped
 @ManagedBean
@@ -39,11 +43,9 @@ public class PlanoFidelidadeMB extends GenericMB {
 
 	@Override
 	public void setLista(List lista) {
-		System.out.println("setando lista: ");
 		this.listaPlanos = new ArrayList<PlanoFidelidade>(lista);
 	}
-	
-		
+
 	public List<PlanoFidelidade> getListaPlanos() {
 		return listaPlanos;
 	}
@@ -51,4 +53,22 @@ public class PlanoFidelidadeMB extends GenericMB {
 	public void setListaPlanos(List<PlanoFidelidade> listaPlanos) {
 		this.listaPlanos = listaPlanos;
 	}
+
+	public List<PlanoFidelidade> autoCompletePlanoFidelidade(String nome) {
+		List<PlanoFidelidade> result = new ArrayList<PlanoFidelidade>();
+		for (PlanoFidelidade p : listaPlanos) {
+			if (p.getNomePlano().toUpperCase().contains(nome.toUpperCase())) {
+				result.add(p);
+			}
+		}
+		return result;
+	}
+	
+	public void onItemSelect(SelectEvent event) {
+		List lista = this.planoFidelidade.getListaPremiacoes();
+		Produto p = (Produto) event.getObject();
+		if(!lista.contains(p)){
+			lista.add(p);
+		}	 	
+	} 
 }
