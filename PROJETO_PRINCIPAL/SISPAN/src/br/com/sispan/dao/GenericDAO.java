@@ -6,38 +6,41 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import br.com.sispan.interfaces.Bean;
+import br.com.sispan.util.JPAUtil;
 
 public class GenericDAO {
 	
-	protected EntityManager entityManager;
 	
-	public  GenericDAO(EntityManager entityManager){
-		this.entityManager = entityManager;
-	}
 	
-	private void cadastrar(Bean model){
-		entityManager.persist(model);
-	}
-	private void alterar(Bean model){
-		entityManager.merge(model);
-	}
 	
-	public void salvar(Bean model){
-		if(model.getId() != null){
-			this.alterar(model);
-		}else{
-			this.cadastrar(model);
+  	public void salvar(Bean model) {
+		EntityManager entityManager = JPAUtil.getEntityManager();
+		entityManager.getTransaction().begin();
+		if (model.getId() != null) {
+			entityManager.persist((entityManager.contains(model)?model:entityManager.merge(model)));
+		} else {
+			entityManager.merge(model);
 		}
+		entityManager.getTransaction().commit();
+		entityManager.close();
 	}
-	
-	public void excluir(Bean model){
-		entityManager.remove(entityManager.merge(model));		
+
+	public Bean consultar(Class c, Long id) {
+		EntityManager entityManager = JPAUtil.getEntityManager();
+		return entityManager.getReference(c, id);
 	}
-	
-	
-	public List  listar(String query){
+
+	public void excluir(Bean b) {
+		EntityManager entityManager = JPAUtil.getEntityManager();
+		entityManager.getTransaction().begin();
+		entityManager.remove((entityManager.contains(b) ? b : entityManager.merge(b)));
+		entityManager.getTransaction().commit();
+		entityManager.close();
+	}
+
+	public List listar(String query) {
+		EntityManager entityManager = JPAUtil.getEntityManager();
 		Query cursor = entityManager.createQuery(query);
 		return cursor.getResultList();
 	}
-
 }

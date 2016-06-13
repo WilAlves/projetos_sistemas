@@ -13,6 +13,7 @@
 		<class>br.com.sispan.model.Producao</class>
 		<class>br.com.sispan.model.Ingrediente</class>
 		<class>br.com.sispan.model.Funcionario</class>
+		<class>br.com.sispan.model.Promocao</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://127.0.0.1/sispan" />

@@ -5,6 +5,10 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+<<<<<<< 4c673af79553dec6f792a3bc115b29a377e2bb17
+=======
+
+>>>>>>> 
 import br.com.sispan.interfaces.Bean;
 import br.com.sispan.model.Produto;
 
@@ -15,10 +19,10 @@ public class ProdutoMB extends GenericMB {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -5614961461170613159L;
+	private static final long serialVersionUID = -4310578030962777015L;
 	private Produto produto = new Produto();
-	private List<Produto> listaProdutos = new ArrayList();
-		
+	private List<Produto> listaProdutos = new ArrayList<Produto>();
+
 	public Produto getProduto() {
 		return produto;
 	}
@@ -27,8 +31,16 @@ public class ProdutoMB extends GenericMB {
 		this.produto = produto;
 	}
 
+	public List<Produto> getListaProdutos() {
+		return listaProdutos;
+	}
+
+	public void setListaProdutos(List<Produto> listaProdutos) {
+		this.listaProdutos = listaProdutos;
+	}
+
 	@Override
-	protected Bean getBean() {	 
+	protected Bean getBean() {
 		return getProduto();
 	}
 
@@ -36,20 +48,22 @@ public class ProdutoMB extends GenericMB {
 	protected void setBean(Bean b) {
 		setProduto((Produto) b);
 	}
-	
+
 	@Override
 	public void setLista(List lista) {
-		System.out.println("setando lista: ");
 		this.listaProdutos = new ArrayList<Produto>(lista);
 	}
-	
-		
-	public List<Produto> getListaProdutos() {
-		return listaProdutos;
-	}
 
-	public void setListaProdutos(List<Produto> listaProdutos) {
-		this.listaProdutos = listaProdutos;
+	 
+	
+	public List<Produto> autoCompleteProdutos(String nome) {
+		List<Produto> result = new ArrayList<Produto>();
+		for (Produto p : listaProdutos) {
+			if (p.getDescricao().toUpperCase().contains(nome.toUpperCase())) {
+				result.add(p);
+			}
+		}
+		return result;
 	}
 
 }

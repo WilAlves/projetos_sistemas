@@ -4,74 +4,153 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <ui:decorate template="/tema/padrao.xhtml">
+	<ui:define name="title">
+		<f:facet name="header">
+			Cadastro
+		</f:facet>
+	</ui:define>
 	<ui:define name="centro">
 		<h:form id="cadastro">
-			<p:panel header="Formulario de cadastro">
-				<h:panelGrid columns="2">
-					<h:panelGrid columns="2">
-						<p:outputLabel value="Código" for="id"
-							redered="#{planoFidelidadeMB.planoFidelidade.id != null}" />
-						<p:outputLabel value="Nome do plano" />
+			<div class="ui-g">
+				<div class="ui-g-12 ui-md-12 ui-lg-12 ui-g-nopad"></div>
+				<div class="ui-g-12 ui-md-12 ui-lg-12 ui-g-nopad">
+					<div class="ui-g-12 ui-md-6 ui-lg-2   ">
+						<p:outputLabel value="Cód. do plano" />
 						<p:inputText id="id"
 							value="#{planoFidelidadeMB.planoFidelidade.id}"
 							redered="#{planoFidelidadeMB.planoFidelidade.id != null}"
 							readonly="true" />
-						<p:inputText
-							value="#{planoFidelidadeMB.planoFidelidade.nomePlano}"
-							required="true" />
-					</h:panelGrid>
-					<h:panelGrid columns="3">
-						<p:outputLabel value="" />
-						<p:outputLabel value="Valor em compras R$" />
-						<p:outputLabel value="Valor em pontos" />
-						<p:outputLabel value="Conversão de pontos" />
-						<p:spinner
-							value="#{planoFidelidadeMB.planoFidelidade.valorAplicavel}" />
-						<p:inputText
-							value="#{planoFidelidadeMB.planoFidelidade.pontoAplicavel}" />
-					</h:panelGrid>
-					<p:panel header="Metas, upgrades e downgrades">
-						<h:panelGrid columns="1">
-							<h:panelGrid columns="2">
-								<p:outputLabel value="Meta por periodo(Pontos)" />
-								<p:outputLabel value="Periodo/Meta" />
-								<p:spinner
-									value="#{planoFidelidadeMB.planoFidelidade.metaPontos}" min="0"
+					</div>
+					<div class="ui-g-12 ui-md-6 ui-lg-4   ">
+						<p:outputLabel value="Nome do plano" />
+						<p:inputText id="nome_plano" required="true"
+							value="#{planoFidelidadeMB.planoFidelidade.nomePlano}" />
+					</div>
+					<div class="ui-g-12 ui-md-12 ui-lg-6 ui-g-nopad">
+						<div class="ui-g-12 ui-md-6 ui-lg-6">
+							<p:outputLabel value="Valor em compras" />
+							<p:inputNumber id="valor_compras" symbol="R$ "
+								decimalSeparator="," minValue="0" thousandSeparator="."
+								required="true"
+								value="#{planoFidelidadeMB.planoFidelidade.valorAplicavel}" />
+						</div>
+						<div class="ui-g-12 ui-md-6 ui-lg-6">
+							<p:outputLabel value="Equivalente em pontos" />
+							<p:inputNumber id="ponto_conversao" required="true" symbol=" Pts"
+								symbolPosition="s" decimalSeparator="" thousandSeparator=""
+								value="#{planoFidelidadeMB.planoFidelidade.pontoAplicavel}" />
+						</div>
+					</div>
+					<div class="ui-g-12 ui-md-12 ui-lg-5">
+						<p:outputLabel value="Produtos/Premiações" />
+						<p:autoComplete id="event" value="#{produtoMB.produto}"
+							completeMethod="#{produtoMB.autoCompleteProdutos}"
+							converter="produtoConverter">
+							<p:ajax event="itemSelect"
+								listener="#{planoFidelidadeMB.onItemSelect}" update="premios" />
+						</p:autoComplete>
+						<p:dataGrid id="premios" columns="1" layout="grid"
+							paginator="true" paginatorPosition="bottom" rows="6"
+							value="#{planoFidelidadeMB.planoFidelidade.listaPremiacoes}"
+							var="premio" type="ordered" rowKey="#{premio}">
+
+							<p:panelGrid columns="2" styleClass="ui-panelgrid-blank"
+								columnClasses="ui-grid-col-9,ui-grid-col-3" layout="grid">
+								<p:outputLabel value="#{premio.descricao}" />
+								<p:commandButton update="premios"
+									action="#{planoFidelidadeMB.excluirPremio()}"
+									icon="ui-icon-trash" title="Remover">
+									<f:setPropertyActionListener value="#{premio}"
+										target="#{planoFidelidadeMB.premio}" />
+								</p:commandButton>
+							</p:panelGrid>
+						</p:dataGrid>
+					</div>
+					<div class="ui-g-12 ui-md-12 ui-lg-7  ">
+						<div class="ui-g-12 ui-md-12 ui-lg-12 ui-g-nopad">
+							<p:outputLabel value="Metas e Upgrades/Downgrades" />
+						</div>
+						<div class="ui-g-12 ui-md-12 ui-lg-6 ui-g-nopad">
+							<div class="ui-g-12 ui-md-12 ui-lg-12 ">
+								<p:outputLabel value="Metas por periodo" />
+							</div>
+							<div class="ui-g-12 ui-md-12 ui-lg-6 ">
+								<p:outputLabel value="Em pontos:" />
+							</div>
+							<div class="ui-g-12 ui-md-12 ui-lg-6 ">
+								<p:spinner min="0"
+									value="#{planoFidelidadeMB.planoFidelidade.metaPontos}"
 									required="true" />
-								<p:spinner
+							</div>
+						</div>
+						<div class="ui-g-12 ui-md-12 ui-lg-6 ui-g-nopad">
+							<div class="ui-g-12 ui-md-12 ui-lg-12 ">
+								<p:outputLabel value="Periodo da meta" />
+							</div>
+							<div class="ui-g-12 ui-md-12 ui-lg-6 ">
+								<p:outputLabel value="Em dias:" />
+							</div>
+							<div class="ui-g-12 ui-md-12 ui-lg-6 ">
+								<p:spinner min="0"
 									value="#{planoFidelidadeMB.planoFidelidade.metaPeriodo}"
-									min="0" required="true" />
-								<p:outputLabel value="Meta upgrade" />
-								<p:outputLabel value="Meta upgrade (Pontos)" />
-								<p:spinner
-									value="#{planoFidelidadeMB.planoFidelidade.metaUpgrade}"
-									min="0" required="true" />
-								<p:spinner
-									value="#{planoFidelidadeMB.planoFidelidade.metaUpgradePontos}"
-									min="0" required="true" />
-								<p:outputLabel value="Meta downgrade" />
-								<p:spinner
-									value="#{planoFidelidadeMB.planoFidelidade.metaDowngrade}"
-									min="0" />
-							</h:panelGrid>
-						</h:panelGrid>
-					</p:panel>
-					<p:panel header="Premiações">
-						<p:panelGrid>
-						</p:panelGrid>
-					</p:panel>
-					<p:commandButton action="#{planoFidelidadeMB.salvar()}"
-						value="Salvar" update="cadastro lista" />
-				</h:panelGrid>
-			</p:panel>
+									required="true" />
+							</div>
+						</div>
+						<div class="ui-g-12 ui-md-12 ui-lg-12 ">
+							<p:outputLabel value="Meta upgrade" />
+						</div>
+						<div class="ui-g-12 ui-md-12 ui-lg-9 ">
+							<p:outputLabel value="Metas alcançadas" />
+						</div>
+						<div class="ui-g-12 ui-md-12 ui-lg-3 ">
+							<p:spinner min="0" required="true"
+								value="#{planoFidelidadeMB.planoFidelidade.metaUpgrade}" />
+						</div>
+						<div class="ui-g-12 ui-md-12 ui-lg-9 ">
+							<p:outputLabel value="Upgrade por pontuação" />
+						</div>
+						<div class="ui-g-12 ui-md-12 ui-lg-3 ">
+							<p:spinner min="0" required="true"
+								value="#{planoFidelidadeMB.planoFidelidade.metaUpgradePontos}" />
+						</div>
+						<div class="ui-g-12 ui-md-12 ui-lg-12 ">
+							<p:selectBooleanCheckbox itemLabel="Downgrade"
+								value="#{planoFidelidadeMB.planoFidelidade.downgradable}">
+							</p:selectBooleanCheckbox>
+						</div>
+						<div class="ui-g-12 ui-md-12 ui-lg-8 ">
+							<h:outputText value="Metas não batidas" />
+						</div>
+						<div class="ui-g-12 ui-md-12 ui-lg-4 ">
+							<p:spinner min="0"
+								value="#{planoFidelidadeMB.planoFidelidade.metaDowngrade}" />
+						</div>
+						<div class="ui-g-12 ui-md-12 ui-lg-12 ">
+							<p:spinner min="0"
+								value="#{planoFidelidadeMB.planoFidelidade.metaDowngrade}" />
+						</div>
+						<div class="ui-g-12 ui-md-12 ui-lg-12 ">
+							<div class="ui-g-6 ui-md-4 ui-lg-2 ui-g-nopad">
+								<p:commandButton action="#{planoFidelidadeMB.novo}" value="Novo"
+									update="cadastro" />
+							</div>
+							<div class="ui-g-6 ui-md-4 ui-lg-2 ui-g-nopad">
+								<p:commandButton action="#{planoFidelidadeMB.salvar}"
+									value="Salvar" update="cadastro lista" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</h:form>
 	</ui:define>
 	<ui:define name="footer">
 		<h:form id="lista">
-			<p:dataTable value="#{planoFidelidadeMB.listaPlanos}" var="plano"
-				selectionMode="single"
-				selection="#{planoFidelidadeMB.planoFidelidade}" rowKey="#{plano}">
-				<p:ajax event="rowSelect" update="cadastro" />
+			<p:dataGrid columns="1"  layout="grid" value="#{planoFidelidadeMB.listaPlanos}" 
+				var="plano" rows="10"
+				paginator="true" paginatorPosition="bottom"
+				selection="#{planoFidelidadeMB.planoFidelidade}"  rowKey="#{plano}">
+				
 				<p:column headerText="Nome plano">
 					<h:outputText value="#{plano.nomePlano}" />
 				</p:column>
@@ -79,17 +158,14 @@
 					<h:outputText value="#{plano.metaPontos}" />
 				</p:column>
 				<p:column style="width:32px;text-align: center">
-					<p:commandButton update="lista"
-					  icon="ui-icon-circle-close"
-						title="View"
-						action="#{planoFidelidadeMB.excluir()}"
-						>
+					<p:commandButton update="cadastro lista"
+						action="#{planoFidelidadeMB.excluir()}" icon="ui-icon-trash"
+						title="Remover">
 						<f:setPropertyActionListener value="#{plano}"
-							target="#{planoFidelidadeMB.planoFidelidade}" 
-							/>
+							target="#{planoFidelidadeMB.planoFidelidade}" />
 					</p:commandButton>
 				</p:column>
-			</p:dataTable>
+			</p:dataGrid>
 		</h:form>
 	</ui:define>
 </ui:decorate>
