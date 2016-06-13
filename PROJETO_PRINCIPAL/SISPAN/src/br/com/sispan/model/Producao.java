@@ -22,13 +22,13 @@ public class Producao implements Bean {
 	@Id
 	@GeneratedValue
 	private Long Produto_id;
-	@Column(name="Produto_descricao", nullable = false, length = 255, unique = true)
+	@Column(name="Produto_descricao", nullable = false, length = 255, unique = false)
 	private String Produto_descricao;
-	@Column(name="Produto_tipo", nullable = false, length = 255, unique = true)
+	@Column(name="Produto_tipo", nullable = false, length = 255, unique = false)
 	private String Produto_tipo;
-	@Column(name="Produto_quantidade", nullable = false, length = 255, unique = true)
+	@Column(name="Produto_quantidade", nullable = false, length = 255, unique = false)
 	private String Produto_quantidade;
-	@Column(name="Produto_status", nullable = false, length = 255, unique = true)
+	@Column(name="Produto_status", nullable = false, length = 255, unique = false)
 	private String Produto_status;
 	
 
