@@ -5,10 +5,6 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-<<<<<<< 4c673af79553dec6f792a3bc115b29a377e2bb17
-=======
-
->>>>>>> 
 import br.com.sispan.interfaces.Bean;
 import br.com.sispan.model.Produto;
 
