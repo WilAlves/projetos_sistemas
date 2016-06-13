@@ -16,10 +16,7 @@
 						<p:inputText value="#{produtoMB.produto.valor}" required="true" />
 					<p:outputLabel value="Quantidade" />
 						<p:inputText value="#{produtoMB.produto.quantidade}" required="true" />
-						<h:panelGrid columns="2">
-					<p:commandButton action="#{produtoMB.salvar}" value="Salvar" update="cadastro lista" />
-					<p:commandButton action="#{produtoMB.novo}" value="Novo" update="cadastro" />
-					</h:panelGrid>
+					<p:commandButton action="#{produtoMB.salvar()}" value="Salvar" update="cadastro lista" />
 				</h:panelGrid>
 			</p:panel>
 		</h:form>
@@ -33,7 +30,7 @@
 				<p:column headerText="Qtde"><h:outputText value="#{plano.quantidade}" /></p:column>
 				<p:column headerText="Valor"><h:outputText value="#{plano.valor}" /></p:column>
 				<p:column style="width:32px;text-align: center">
-					<p:commandButton update="lista" icon="ui-icon-search" title="View" action="#{produtoMB.excluir()}" >
+					<p:commandButton update="lista" icon="ui-icon-circle-close" title="View" action="#{produtoMB.excluir()}" >
 						<f:setPropertyActionListener value="#{plano}" target="#{produtoMB.produto}" />
 					</p:commandButton>
 				</p:column>
