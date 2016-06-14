@@ -22,6 +22,7 @@ public class PlanoFidelidadeMB extends GenericMB {
 	private static final long serialVersionUID = 6907589437151369582L;
 	private PlanoFidelidade planoFidelidade = new PlanoFidelidade();
 	private List<PlanoFidelidade> listaPlanos = new ArrayList();
+	private Produto premio;
 
 	public PlanoFidelidade getPlanoFidelidade() {
 		return planoFidelidade;
@@ -53,6 +54,20 @@ public class PlanoFidelidadeMB extends GenericMB {
 	public void setListaPlanos(List<PlanoFidelidade> listaPlanos) {
 		this.listaPlanos = listaPlanos;
 	}
+	
+
+	public Produto getPremio() {
+		return premio;
+	}
+
+	public void setPremio(Produto premio) {
+		this.premio = premio;
+	}
+	
+	public void excluirPremio(){
+		System.out.println("chamou");
+		planoFidelidade.getListaPremiacoes().remove(premio);
+	}
 
 	public List<PlanoFidelidade> autoCompletePlanoFidelidade(String nome) {
 		List<PlanoFidelidade> result = new ArrayList<PlanoFidelidade>();
@@ -71,4 +86,5 @@ public class PlanoFidelidadeMB extends GenericMB {
 			lista.add(p);
 		}	 	
 	} 
+	
 }
