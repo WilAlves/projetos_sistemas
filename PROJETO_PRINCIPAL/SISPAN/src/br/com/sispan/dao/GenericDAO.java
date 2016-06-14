@@ -12,6 +12,7 @@ public class GenericDAO {
 	
 	
 	
+	
   	public void salvar(Bean model) {
 		EntityManager entityManager = JPAUtil.getEntityManager();
 		entityManager.getTransaction().begin();
