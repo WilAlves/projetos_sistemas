@@ -4,6 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import br.com.sispan.interfaces.Bean;
@@ -21,6 +23,7 @@ public class Usuario implements Bean {
 	@Column(name="id_usuario")
 	private Long id;
 	
+
 	@Column(name="login_usuario", nullable = false, length = 8, unique = true)
 	private String loginUsuario;
 	
