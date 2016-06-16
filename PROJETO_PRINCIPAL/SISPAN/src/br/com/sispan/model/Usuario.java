@@ -23,6 +23,7 @@ public class Usuario implements Bean {
 	@Column(name="id_usuario")
 	private Long id;
 	
+
 	@Column(name="login_usuario", nullable = false, length = 8, unique = true)
 	private String loginUsuario;
 	
