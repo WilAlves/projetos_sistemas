@@ -22,7 +22,7 @@
 			<p:outputLabel value="Chave de Segurança" />
           	<p:inputText value="#{clienteMB.cliente.codcartaoCliente}" />
 			          	
-        	<p:commandButton action="#{clienteMB.salvar}" value="Salvar" update="cadastro lista" />
+        	<p:commandButton action="#{clienteMB.salvar()}" value="Salvar" update="cadastro lista" />
     	          	          	
         </p:panelGrid>
          
