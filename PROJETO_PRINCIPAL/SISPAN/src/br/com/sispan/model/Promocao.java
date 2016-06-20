@@ -33,7 +33,7 @@ public class Promocao implements Bean {
 	@GeneratedValue
 	@Column(name = "id_promocao")
 	private Long id;
-	@Column
+	@Column(unique=true)
 	private String nome;
 	@Column(name = "data_inicio", nullable = false)
 	@Temporal(TemporalType.TIMESTAMP)

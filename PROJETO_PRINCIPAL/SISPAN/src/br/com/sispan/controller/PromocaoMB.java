@@ -67,6 +67,15 @@ public class PromocaoMB extends GenericMB {
 	public void setPlano(PlanoFidelidade plano) {
 		this.plano = plano;
 	}
+	
+
+	public Produto getProduto() {
+		return produto;
+	}
+
+	public void setProduto(Produto produto) {
+		this.produto = produto;
+	}
 
 	public void onItemSelect(SelectEvent event) {
 		PlanoFidelidade p = (PlanoFidelidade) event.getObject();
@@ -74,6 +83,13 @@ public class PromocaoMB extends GenericMB {
 		if(!lista.contains(p)){
 			lista.add(p);
 			p.setPromocao(promocao);
+		} 
+	}
+	public void onItemSelectProduto(SelectEvent event) {
+		Produto p = (Produto) event.getObject();
+		List<Produto> lista = promocao.getProdutosParticipantes();
+		if(!lista.contains(p)){
+			lista.add(p);
 		} 
 	}
 	public void excluirPublico(){
