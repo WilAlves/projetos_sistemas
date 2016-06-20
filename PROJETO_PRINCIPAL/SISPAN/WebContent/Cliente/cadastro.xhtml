@@ -3,51 +3,74 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
-    <ui:decorate template="/tema/padrao.xhtml">
-        <ui:define name="centro">
-        <h:form id="cadastro">
-        <fieldset>
-        <legend>Cadastro de Clientes</legend>
-        	<p:panelGrid columns="2">
 
- 			<p:outputLabel value="ID Cliente" for="id" redered="#{clienteMB.cliente.id != null}" />
-          	<p:inputText id="id" value="#{clienteMB.cliente.id}" redered="#{clienteMB.cliente.id != null}" readonly="true" size="10"/>         	
-        	      	
-        	<p:outputLabel value="Numero do Cartão de Crédito" />
-          	<p:inputText value="#{clienteMB.cliente.cartaoCliente}" />
-          	
-			<p:outputLabel value="Validade do Cartão de Crédito" />
-          	<p:inputText value="#{clienteMB.cliente.validadecartaoCliente}" />
-			
-			<p:outputLabel value="Chave de Segurança" />
-          	<p:inputText value="#{clienteMB.cliente.codcartaoCliente}" />
-			          	
-        	<p:commandButton action="#{clienteMB.salvar()}" value="Salvar" update="cadastro lista" />
-    	          	          	
-        </p:panelGrid>
-         
-   		</fieldset>
-        </h:form>
-        </ui:define>
-        
-        <ui:define name="footer">
+<ui:decorate template="/tema/padrao.xhtml">
+	<ui:define name="centro">
+		<h:form id="cadastro">
+			<fieldset>
+				<legend>Cadastro de Clientes</legend>
+				<p:panelGrid columns="2">
+
+					<p:outputLabel value="ID Cliente" for="id"
+						redered="#{clienteMB.cliente.id != null}" />
+					<p:inputText id="id" value="#{clienteMB.cliente.id}"
+						redered="#{clienteMB.cliente.id != null}" readonly="true"
+						size="10" />
+
+					<p:outputLabel value="Numero do Cartão de Crédito" />
+					<p:inputText value="#{clienteMB.cliente.cartaoCliente}" />
+
+					<p:outputLabel value="Validade do Cartão de Crédito" />
+					<p:inputText value="#{clienteMB.cliente.validadecartaoCliente}" />
+
+					<p:outputLabel value="Chave de Segurança" />
+					<p:inputText value="#{clienteMB.cliente.codcartaoCliente}" />
+					<p:outputLabel value="Plano de Fidelidade" />
+					<p:selectOneMenu id="advanced" value="#{clienteMB.cliente.plano}" converter="planoConverter"
+						  filter="true" filterMatchMode="contains"  >
+						<f:selectItems value="#{planoFidelidadeMB.listaPlanos}" var="plano"
+							itemLabel="#{plano.nomePlano}" itemValue="#{plano}" />		
+					</p:selectOneMenu>
+
+					<p:commandButton action="#{clienteMB.salvar}" value="Salvar"
+						update="cadastro lista" />
+
+				</p:panelGrid>
+
+			</fieldset>
+		</h:form>
+	</ui:define>
+
+	<ui:define name="footer">
 		<h:form id="lista">
-			<p:dataTable value="#{clienteMB.listaClientes}" var="plano"	selectionMode="single" selection="#{clienteMB.cliente}" rowKey="#{plano}">
+			<p:dataTable value="#{clienteMB.listaClientes}" var="plano"
+				selectionMode="single" selection="#{clienteMB.cliente}"
+				rowKey="#{plano}">
 				<p:ajax event="rowSelect" update="cadastro" />
-				<p:column headerText="ID"><h:outputText value="#{plano.id}" /></p:column>
-				<p:column headerText="Cartão"><h:outputText value="#{plano.cartaoCliente}" /></p:column>
-				<p:column headerText="Validade do Cartão"><h:outputText value="#{plano.validadecartaoCliente}" /></p:column>
-				<p:column headerText="Código"><h:outputText value="#{plano.codcartaoCliente}" /></p:column>
+				<p:column headerText="ID">
+					<h:outputText value="#{plano.id}" />
+				</p:column>
+				<p:column headerText="Cartão">
+					<h:outputText value="#{plano.cartaoCliente}" />
+				</p:column>
+				<p:column headerText="Validade do Cartão">
+					<h:outputText value="#{plano.validadecartaoCliente}" />
+				</p:column>
+				<p:column headerText="Código">
+					<h:outputText value="#{plano.codcartaoCliente}" />
+				</p:column>
 				<p:column style="width:32px;text-align: center;font-size: 0.5em">
-					<p:commandButton update="lista" icon="ui-icon-circle-close" title="View" action="#{clienteMB.excluir()}" >
-						<f:setPropertyActionListener value="#{plano}" target="#{clienteMB.cliente}" />
+					<p:commandButton update="lista" icon="ui-icon-circle-close"
+						title="View" action="#{clienteMB.excluir()}">
+						<f:setPropertyActionListener value="#{plano}"
+							target="#{clienteMB.cliente}" />
 					</p:commandButton>
 				</p:column>
 			</p:dataTable>
 		</h:form>
-		</ui:define>
-    	
-        
-        
-    </ui:decorate>
+	</ui:define>
+
+
+
+</ui:decorate>
 </html>

@@ -24,7 +24,8 @@ public class PlanoConverter implements Converter{
 
 	@Override
 	public String getAsString(FacesContext arg0, UIComponent arg1, Object arg2) {
+		System.out.println("arg: " + arg2.getClass());
 		PlanoFidelidade plano = (PlanoFidelidade) arg2;
-		return String.valueOf(plano.getId());
+		return plano.getNomePlano();
 	}
 }

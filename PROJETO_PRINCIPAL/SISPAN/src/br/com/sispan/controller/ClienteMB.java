@@ -5,8 +5,13 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+
+import org.primefaces.event.SelectEvent;
+
 import br.com.sispan.interfaces.Bean;
 import br.com.sispan.model.Cliente;
+import br.com.sispan.model.PlanoFidelidade;
+import br.com.sispan.model.Produto;
 
 @ViewScoped
 @ManagedBean
@@ -18,11 +23,11 @@ public class ClienteMB extends GenericMB {
 	private static final long serialVersionUID = 3293363169350986859L;
 	private Cliente cliente = new Cliente();
 	private List<Cliente> listaClientes = new ArrayList();
-
+	
 	public Cliente getCliente() {
 		return cliente;
 	}
-	
+
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
@@ -34,22 +39,29 @@ public class ClienteMB extends GenericMB {
 
 	@Override
 	protected void setBean(Bean b) {
-		setCliente((Cliente)b);
+		setCliente((Cliente) b);
 	}
-	
+
 	@Override
 	public void setLista(List lista) {
 		System.out.println("Setando lista: ");
 		this.listaClientes = new ArrayList<Cliente>(lista);
-		
-	}	
-	
-	public List<Cliente> getListaClientes(){
+
+	}
+
+	public List<Cliente> getListaClientes() {
 		return listaClientes;
 	}
-	
-	public void setListaClientes(List<Cliente> listaClientes){
+
+	public void setListaClientes(List<Cliente> listaClientes) {
 		this.listaClientes = listaClientes;
 	}
-	
+
+	@Override
+	public void salvar() {
+		// TODO Auto-generated method stub
+		System.out.println("Plano do cliente: " + cliente.getPlano());
+		super.salvar();
+	}
+
 }

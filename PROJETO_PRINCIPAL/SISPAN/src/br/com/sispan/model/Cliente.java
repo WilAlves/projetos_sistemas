@@ -4,6 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import br.com.sispan.interfaces.Bean;
@@ -29,6 +31,10 @@ public class Cliente implements Bean {
 	@Column(name="codcartao_cliente", nullable = false, length = 3, unique = true)
 	private String codcartaoCliente;
 
+	@ManyToOne
+	@JoinColumn(name="id_plano")
+	private PlanoFidelidade plano;
+	
 	public Long getId() {
 		return id;
 	}
@@ -65,10 +71,11 @@ public class Cliente implements Bean {
 		return serialVersionUID;
 	}
 
-	
-	
-	
+	public PlanoFidelidade getPlano() {
+		return plano;
+	}
 
-	
-	
+	public void setPlano(PlanoFidelidade plano) {
+		this.plano = plano;
+	}
 }
