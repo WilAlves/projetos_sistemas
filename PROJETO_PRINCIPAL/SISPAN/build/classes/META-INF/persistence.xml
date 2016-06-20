@@ -16,14 +16,14 @@
 		<class>br.com.sispan.model.Promocao</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+			<!-- <property name="javax.persistence.jdbc.url" value="jdbc:mysql://192.168.56.1/sispan" /> -->
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/sispan" />
 			<property name="javax.persistence.jdbc.user" value="sispan" />
 			<property name="javax.persistence.jdbc.password" value="sispan" />
 			<property name="hibernate.hbm2ddl.auto" value="update" />
-			<property name="hibernate.show_sql" value="false" />
+			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="false" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
-
 		</properties>
 
 	</persistence-unit>

@@ -4,9 +4,9 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <ui:decorate template="/tema/padrao.xhtml">
-	<ui:define name="title">
+	<ui:define name="meu_titulo">
 		<f:facet name="header">
-			Cadastro
+			Cadastro de plano de fidelidade
 		</f:facet>
 	</ui:define>
 	<ui:define name="centro">
@@ -126,15 +126,15 @@
 								value="#{planoFidelidadeMB.planoFidelidade.metaDowngrade}" />
 						</div>
 						<div class="ui-g-12 ui-md-12 ui-lg-12 ">
-							<p:spinner min="0"
-								value="#{planoFidelidadeMB.planoFidelidade.metaDowngrade}" />
-						</div>
-						<div class="ui-g-12 ui-md-12 ui-lg-12 ">
-							<div class="ui-g-6 ui-md-4 ui-lg-2 ui-g-nopad">
-								<p:commandButton action="#{planoFidelidadeMB.novo}" value="Novo"
-									update="cadastro" />
+							<div class="ui-g-6 ui-md-4 ui-lg-3 ui-g-nopad">
+								<p:fragment autoUpdate="true">
+									<p:commandButton actionListener="#{planoFidelidadeMB.novo()}"
+										value="Novo"
+										redered="#{planoFidelidadeMB.planoFidelidade.id != null}"
+										update="cadastro" />
+								</p:fragment>
 							</div>
-							<div class="ui-g-6 ui-md-4 ui-lg-2 ui-g-nopad">
+							<div class="ui-g-6 ui-md-4 ui-lg-3 ui-g-nopad">
 								<p:commandButton action="#{planoFidelidadeMB.salvar}"
 									value="Salvar" update="cadastro lista" />
 							</div>
@@ -143,29 +143,34 @@
 				</div>
 			</div>
 		</h:form>
+
 	</ui:define>
 	<ui:define name="footer">
 		<h:form id="lista">
-			<p:dataGrid columns="1"  layout="grid" value="#{planoFidelidadeMB.listaPlanos}" 
-				var="plano" rows="10"
-				paginator="true" paginatorPosition="bottom"
-				selection="#{planoFidelidadeMB.planoFidelidade}"  rowKey="#{plano}">
-				
-				<p:column headerText="Nome plano">
+			<p:dataTable value="#{planoFidelidadeMB.listaPlanos}" var="plano"
+				selectionMode="single"
+				selection="#{planoFidelidadeMB.planoFidelidade}" rowKey="#{plano}">
+				<p:ajax event="rowSelect" update="cadastro" />
+				<p:column headerText="ID">
+					<h:outputText value="#{plano.id}" />
+				</p:column>
+				<p:column headerText="Descrição">
 					<h:outputText value="#{plano.nomePlano}" />
 				</p:column>
-				<p:column headerText="Meta">
+				<p:column headerText="Meta em pontos">
 					<h:outputText value="#{plano.metaPontos}" />
 				</p:column>
+				<p:column headerText="Periodo em dias">
+					<h:outputText value="#{plano.metaPeriodo}" />
+				</p:column>
 				<p:column style="width:32px;text-align: center">
-					<p:commandButton update="cadastro lista"
-						action="#{planoFidelidadeMB.excluir()}" icon="ui-icon-trash"
-						title="Remover">
+					<p:commandButton update="lista" icon="ui-icon-trash" title="View"
+						action="#{planoFidelidadeMB.excluir()}">
 						<f:setPropertyActionListener value="#{plano}"
 							target="#{planoFidelidadeMB.planoFidelidade}" />
 					</p:commandButton>
 				</p:column>
-			</p:dataGrid>
+			</p:dataTable>
 		</h:form>
 	</ui:define>
 </ui:decorate>

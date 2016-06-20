@@ -47,20 +47,17 @@ public abstract class GenericMB implements Serializable {
 				dao = (GenericDAO) Class.forName(daoName).newInstance();
 			} catch (ClassNotFoundException e) {
 				dao = new GenericDAO();
+			}catch (InstantiationException e) {
+				dao = new GenericDAO();
+			} catch (IllegalAccessException e) {
+				dao = new GenericDAO();
 			}
 			dao.salvar(b);
 			novo();
 			carregaLista();
 			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage("Sucesso", b.getClass().getSimpleName() + " salvo com sucesso!"));
-		} catch (InstantiationException e) {
-			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage("Falha", "Falha ao salvar: " + b.getClass().getSimpleName() + "\n" + e));
-			System.out.println(e);
-		} catch (IllegalAccessException e) {
-			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage("Falha", "Falha ao salvar: " + b.getClass().getSimpleName() + "\n" + e));
-			System.out.println(e);
+
 		} catch (Exception e) {
 			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage("Falha", "Falha ao salvar: " + b.getClass().getSimpleName() + "\n" + e));

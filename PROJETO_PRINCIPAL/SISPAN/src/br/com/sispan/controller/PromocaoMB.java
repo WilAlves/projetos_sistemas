@@ -10,6 +10,7 @@ import org.primefaces.event.SelectEvent;
 
 import br.com.sispan.interfaces.Bean;
 import br.com.sispan.model.PlanoFidelidade;
+import br.com.sispan.model.Produto;
 import br.com.sispan.model.Promocao;
 
 
@@ -24,6 +25,8 @@ public class PromocaoMB extends GenericMB {
 	
 	private Promocao promocao = new Promocao();
 	private List<Promocao>listaPromocoes = new ArrayList<Promocao>();
+	private PlanoFidelidade plano = new PlanoFidelidade();
+	private Produto produto = new Produto();
 	
 	public Promocao getPromocao() {
 		return promocao;
@@ -56,23 +59,27 @@ public class PromocaoMB extends GenericMB {
 		this.listaPromocoes = new ArrayList<Promocao>(lista);
 	}
 	
-	public void onItemSelect(SelectEvent event) {
-		PlanoFidelidade p = (PlanoFidelidade) event.getObject();
-		List<PlanoFidelidade> lista = promocao.getListaPlanos();
-		if(!lista.contains(p)){
-			lista.add(p);
-		}else{
-			System.out.println("ja presente na lista");
-		}
+	
+	public PlanoFidelidade getPlano() {
+		return plano;
 	}
 
-	@Override
-	public void salvar() {
-		for(PlanoFidelidade p : promocao.getListaPlanos()){
-			p.setPromocao(promocao);
-		}
-		super.salvar();
-	} 
-	
+	public void setPlano(PlanoFidelidade plano) {
+		this.plano = plano;
+	}
 
+	public void onItemSelect(SelectEvent event) {
+		PlanoFidelidade p = (PlanoFidelidade) event.getObject();
+		List<PlanoFidelidade> lista = promocao.getPublicoAlvo();
+		if(!lista.contains(p)){
+			lista.add(p);
+			p.setPromocao(promocao);
+		} 
+	}
+	public void excluirPublico(){
+		promocao.getPublicoAlvo().remove(plano);
+	}
+	public void excluirProduto(){
+		promocao.getProdutosParticipantes().remove(produto);
+	}
 }
