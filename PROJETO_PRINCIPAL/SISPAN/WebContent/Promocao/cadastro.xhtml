@@ -4,65 +4,115 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <ui:decorate template="/tema/padrao.xhtml">
+	<ui:define name="meu_titulo">
+		<f:facet name="header">
+			Cadastro de Promoções
+		</f:facet>
+	</ui:define>
 	<ui:define name="centro">
 		<h:form id="cadastro">
-			<p:panelGrid style="width:100%">
-				<f:facet name="header">
-					<p:row>
-						<p:column colspan="9">Cadastro de promoções</p:column>
-					</p:row>
-				</f:facet>
-				<p:row>
-					<p:column>Código da promoção</p:column>
-					<p:column colspan="6">Nome da promoção</p:column>
-				</p:row>
-				<p:row>
-					<p:column>
-						<p:inputText id="id" value="#{promocaoMB.promocao.id}"
-							redered="#{promocaoMB.promocao.id != null}" readonly="true" />
-					</p:column>
-					<p:column colspan="3">
-						<p:inputText id="nome" value="#{promocaoMB.promocao.nome}" />
-					</p:column>
-				</p:row>
-				<p:row>
-					<p:column>
+			<div class="ui-g">
+				<div class="ui-g-12 ui-md-12 ui-lg-12 ui-g-nopad">
+					<div class="ui-g-12 ui-md-12 ui-lg-2  ">
+						<p:outputLabel value="Código" />
+						<p:inputText id="codigo_promocao"
+							value="#{promocaoMB.promocao.id}" readonly="true" />
+					</div>
+					<div class="ui-g-12 ui-md-12 ui-lg-4  ">
+						<p:outputLabel value="Nome da promoção" />
+						<p:inputText id="nome_promocao"
+							value="#{promocaoMB.promocao.nome}" required="true" />
+					</div>
+					 
+					<!--  <div class="ui-g-12 ui-md-12 ui-lg-2  ">
+						<p:outputLabel value="Tipo promoção" />
+						<h:selectOneMenu required="true" label="Text 3">
+							<p:ajax update="" />
+							<f:selectItem itemLabel="Select One" itemValue=""
+								noSelectionOption="true" />
+							<f:selectItem itemLabel="Option 1" itemValue="1" />
+							<f:selectItem itemLabel="Option 2" itemValue="2" />
+							<f:selectItem itemLabel="Option 3" itemValue="3" />
+						</h:selectOneMenu>
+					</div> -->
+					<div class="ui-g-12 ui-md-12 ui-lg-2  ">
+						<p:outputLabel value="data de Inicio" />
+						<p:calendar navigator="true"
+							value="#{promocaoMB.promocao.dataInicio}" />
+					</div>
+					<div class="ui-g-12 ui-md-12 ui-lg-2 ">
+						<p:outputLabel value="data de Término" />
+						<p:calendar navigator="true"
+							value="#{promocaoMB.promocao.dataFim}" />
+					</div>
+				</div>
+				<div class="ui-g-12 ui-md-12 ui-lg-12 ui-g-nopad">
+					<div class="ui-g-12 ui-md-12 ui-lg-6">
+						<p:outputLabel value="Público alvo" />
 						<p:autoComplete id="event"
 							value="#{planoFidelidadeMB.planoFidelidade}"
-							completeMethod="#{planoFidelidadeMB.autoCompletePlanoFidelidade}" 
-							converter="planoConverter"	>
-							<p:ajax event="itemSelect" listener="#{promocaoMB.onItemSelect}" update="planos" />
+							completeMethod="#{planoFidelidadeMB.autoCompletePlanoFidelidade}"
+							converter="planoConverter">
+							<p:ajax event="itemSelect" listener="#{promocaoMB.onItemSelect}"
+								update="publicoAlvo" />
 						</p:autoComplete>
-					</p:column>
-				</p:row>
-				<p:row>
-					<p:column colspan="3" rowspan="5">
-						<p:dataTable id="planos"
-							value="#{promocaoMB.promocao.listaPlanos}"
-							var="plano" type="ordered" rowKey="#{plano}">
-							<p:column headerText="Descrição">
-								<p:outputLabel value="#{plano}" />
-							</p:column>
-							<p:column headerText="">
-								<p:commandButton update="cadastro planos"
-									action="#{planoFidelidadeMB.planoFidelidade.excluirPremio}"
-									icon="ui-icon-trash" title="Remover">
+						<p:dataGrid id="publicoAlvo" columns="1" layout="grid"
+							paginator="true" paginatorPosition="bottom" rows="4"
+							value="#{promocaoMB.promocao.publicoAlvo}" var="plano"
+							type="ordered" rowKey="#{plano}">
+
+							<p:panelGrid columns="2" styleClass="ui-panelgrid-blank"
+								columnClasses="ui-grid-col-9,ui-grid-col-3" layout="grid">
+								<p:outputLabel value="#{plano.nomePlano}" />
+								<p:commandButton update="publicoAlvo"
+									action="#{promocaoMB.excluirPublico()}" icon="ui-icon-trash"
+									title="Remover">
 									<f:setPropertyActionListener value="#{plano}"
-										target="#{promocaoMB.promocao.planoRemovido}" />
+										target="#{promocaoMB.plano}" />
 								</p:commandButton>
-							</p:column>
-						</p:dataTable>
-					</p:column>
-				</p:row>
-				<p:row>
-					<p:column colspan="3">
-						<p:commandButton action="#{promocaoMB.novo}" value="Novo"
-							update="cadastro" />
-						<p:commandButton action="#{promocaoMB.salvar}" value="Salvar"
-							update="cadastro lista" />
-					</p:column>
-				</p:row>
-			</p:panelGrid>
+							</p:panelGrid>
+						</p:dataGrid>
+					</div>
+					<div class="ui-g-12 ui-md-12 ui-lg-6 ">
+						<p:outputLabel value="Produtos participantes" />
+						<p:autoComplete value="#{produtoMB.produto}"
+							completeMethod="#{produtoMB.autoCompleteProdutos}"
+							converter="produtoConverter">
+							<p:ajax event="itemSelect"
+								listener="#{planoFidelidadeMB.onItemSelect}" update="produtos" />
+						</p:autoComplete>
+						<p:dataGrid id="produtos" columns="1" layout="grid"
+							paginator="true" paginatorPosition="bottom" rows="4"
+							value="#{promocaoMB.promocao.produtosParticipantes}"
+							var="produto" type="ordered" rowKey="#{produto}">
+
+							<p:panelGrid columns="2" styleClass="ui-panelgrid-blank"
+								columnClasses="ui-grid-col-9,ui-grid-col-3" layout="grid">
+								<p:outputLabel value="#{premio.descricao}" />
+								<p:commandButton update="produtos"
+									action="#{promocaoMB.excluirPremio()}"
+									icon="ui-icon-trash" title="Remover">
+									<f:setPropertyActionListener value="#{premio}"
+										target="#{planoFidelidadeMB.premio}" />
+								</p:commandButton>
+							</p:panelGrid>
+						</p:dataGrid>
+					</div>
+					<div class="ui-g-12 ui-md-12 ui-lg-6">
+						<div class="ui-g-6 ui-md-4 ui-lg-3 ui-g-nopad">
+								<p:fragment autoUpdate="true">
+									<p:commandButton actionListener="#{promocaoMB.novo()}"
+										value="Novo"
+										update="cadastro" />
+								</p:fragment>
+							</div>
+							<div class="ui-g-6 ui-md-4 ui-lg-3 ui-g-nopad">
+								<p:commandButton action="#{promocaoMB.salvar}"
+									value="Salvar" update="cadastro lista" />
+							</div>
+					</div>
+				</div>
+			</div>
 		</h:form>
 	</ui:define>
 	<ui:define name="footer">

@@ -56,7 +56,12 @@ public class Produto implements Bean {
 		
 	@ManyToMany(fetch=FetchType.LAZY,mappedBy="listaPremiacoes")
 	private List<PlanoFidelidade>  planos;
+<<<<<<< fdb1d44f614dbfb97c3ee95972ab947843b782c7
 
+=======
+	@ManyToMany(fetch=FetchType.LAZY,mappedBy="produtosParticipantes")
+	private List<Promocao>promocoes;
+>>>>>>> tela de cadastro de planos concluida
 	//Metodos de GET e SET...
 	public Long getId() {
 		// TODO Auto-generated method stub

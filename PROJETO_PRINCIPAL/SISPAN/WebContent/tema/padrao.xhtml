@@ -54,7 +54,11 @@
 					</h:form>
 				</ui:insert>
 				<p:panel id="block">
+					<p:panelGrid columns="1" columnClasses="ui-grid-col-12" layout="grid">
+					<ui:insert name="meu_titulo"></ui:insert>
 					<ui:insert name="centro"></ui:insert>
+					</p:panelGrid>
+					
 				</p:panel>
 			</p:panelGrid>
 			<p:panelGrid columns="1" columnClasses="ui-grid-col-12" layout="grid"
