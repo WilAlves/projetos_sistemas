@@ -1,36 +1,3 @@
-<<<<<<< fdb1d44f614dbfb97c3ee95972ab947843b782c7
-<?xml version="1.0" encoding="UTF-8"?>
-<persistence version="2.1"
-	xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
-	<persistence-unit name="SISPAN" transaction-type="RESOURCE_LOCAL">
-		<provider>org.hibernate.ejb.HibernatePersistence</provider>
-		<class>br.com.sispan.model.PlanoFidelidade</class>
-		<class>br.com.sispan.model.Produto</class>
-		<class>br.com.sispan.model.Fornecedor</class>
-		<class>br.com.sispan.model.Usuario</class>
-		<class>br.com.sispan.model.Cliente</class>
-		<class>br.com.sispan.model.Receita</class>
-		<class>br.com.sispan.model.Producao</class>
-		<class>br.com.sispan.model.Ingrediente</class>
-		<class>br.com.sispan.model.Funcionario</class>
-		<class>br.com.sispan.model.Promocao</class>
-		<properties>
-			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
-			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/sispan" />
-			<property name="javax.persistence.jdbc.user" value="sispan" />
-			<property name="javax.persistence.jdbc.password" value="sispan" />
-			<property name="hibernate.hbm2ddl.auto" value="update" />
-			<property name="hibernate.show_sql" value="false" />
-			<property name="hibernate.format_sql" value="false" />
-			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
-
-		</properties>
-
-	</persistence-unit>
-
-</persistence>
-=======
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.1"
 	xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -51,8 +18,8 @@
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
 			<!-- <property name="javax.persistence.jdbc.url" value="jdbc:mysql://192.168.56.1/sispan" /> -->
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/sispan" />
-			<property name="javax.persistence.jdbc.user" value="sispan" />
-			<property name="javax.persistence.jdbc.password" value="sispan" />
+			<property name="javax.persistence.jdbc.user" value="root" />
+			<property name="javax.persistence.jdbc.password" value="123456" />
 			<property name="hibernate.hbm2ddl.auto" value="update" />
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="false" />
@@ -62,4 +29,3 @@
 	</persistence-unit>
 
 </persistence>
->>>>>>> tela de cadastro de planos concluida
