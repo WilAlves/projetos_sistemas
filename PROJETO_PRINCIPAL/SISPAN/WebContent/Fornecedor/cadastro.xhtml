@@ -12,10 +12,10 @@
 					<p:inputText id="id" value="#{fornecedorMB.fornecedor.id}" redered="#{fornecedorMB.fornecedor.id != null}" readonly="true" />
 					<p:outputLabel value="Nome Fantasia: " /><p:inputText value="#{fornecedorMB.fornecedor.nome_fantasia}" required="true" />
 					<p:outputLabel value="CNPJ: "/><p:inputMask value="#{fornecedorMB.fornecedor.CNPJ}" required="true" mask="99.999.999/9999-99" />
-					<p:outputLabel value="INS. ESTADUAL: "/><p:inputText value="#{fornecedorMB.fornecedor.inscricao_estadual}" required="true" />
-					<p:outputLabel value="TELEFONE: "/><p:inputMask value="#{fornecedorMB.fornecedor.telefone}" required="true" mask="(99)9999-9999"/>
-					<p:outputLabel value="ENDEREÇO: "/><p:inputText value="#{fornecedorMB.fornecedor.endereco}" required="true" />
-					<p:outputLabel value="EMAIL: "/><p:inputText value="#{fornecedorMB.fornecedor.email}" required="true" />
+					<p:outputLabel value="Ins. Estadual: "/><p:inputText value="#{fornecedorMB.fornecedor.inscricao_estadual}" required="true" />
+					<p:outputLabel value="Telefone: "/><p:inputMask value="#{fornecedorMB.fornecedor.telefone}" required="true" mask="(99)9999-9999"/>
+					<p:outputLabel value="Endereço: "/><p:inputText value="#{fornecedorMB.fornecedor.endereco}" required="true" />
+					<p:outputLabel value="E-MAIL: "/><p:inputText value="#{fornecedorMB.fornecedor.email}" required="true" />
 					<p:commandButton action="#{fornecedorMB.salvar()}" value="Salvar" update="cadastro lista" />
 				</h:panelGrid>
 			</p:panel>
