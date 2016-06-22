@@ -23,15 +23,20 @@ public class Receita implements Bean {
 	@Id
 	@GeneratedValue
 	private Long receitaid;
-	@Column(name="receitadescricao",nullable = false, length = 255, unique = true)
+	@Column(name="receitadescricao",nullable = false, length = 255, unique = false)
 	private String receitadescricao;
-	@Column(name="receitatipo", nullable = false, length = 255, unique = true)
+	@Column(name="receitatipo", nullable = false, length = 255, unique = false)
 	private String receitatipo;
-	@Column(name="receitamodofazer", nullable = false, length = 255, unique = true)
+	@Column(name="receitamodofazer", nullable = false, length = 255, unique = false)
 	private String receitamodofazer;
 	
 	@ManyToMany(mappedBy = "receitas")
 	private List<Producao> producoes;
+	
+	@ManyToMany
+	@JoinTable(name= "Receita_ingrediente",joinColumns = {@JoinColumn(name= "ReceitaID")},
+	inverseJoinColumns = {@JoinColumn(name = "Ingrediente_Id")})
+	private List<Ingrediente> ingredientes;
 	
 	@Override
 	public Long getId() {

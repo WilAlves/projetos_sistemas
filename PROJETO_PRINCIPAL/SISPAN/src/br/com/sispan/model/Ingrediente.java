@@ -1,9 +1,14 @@
 package br.com.sispan.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import br.com.sispan.interfaces.Bean;
 
@@ -18,16 +23,15 @@ public class Ingrediente implements Bean{
 	@Id
 	@GeneratedValue
 	private Long Id;
-	@Column(name="ingredientedescricao",nullable = false, length = 255, unique = true)
+	@Column(name="ingredientedescricao",nullable = false, length = 255, unique = false)
 	private String ingredientedescricao;
 	@Column(name="ingredientequantidade", nullable = false, precision = 0)
 	private Integer ingredientequantidade;
-	@Column(name="ingredientetipo", nullable = false, length = 255, unique = true)
+	@Column(name="ingredientetipo", nullable = false, length = 255, unique = false)
 	private String ingredientetipo;
-	@Column(name="ReceitaIngrediente", nullable = false)
-	private Integer receitaingrediente;
-	@Column(name="ProducaoIngrediente", nullable = false)
-	private Integer producaoingrediente;
+	
+	@ManyToMany(mappedBy = "ingredientes")
+	private List<Receita> receitas;
 	
 	@Override
 	public Long getId() {
@@ -64,20 +68,5 @@ public class Ingrediente implements Bean{
 		this.ingredientetipo = ingredientetipo;
 	}
 
-	public Integer getReceitaIngrediente() {
-		return receitaingrediente;
-	}
-
-	public void setReceitaIngrediente(Integer receitaIngrediente) {
-		receitaingrediente = receitaIngrediente;
-	}
-
-	public Integer getProducaoIngrediente() {
-		return producaoingrediente;
-	}
-
-	public void setProducaoIngrediente(Integer producaoIngrediente) {
-		producaoingrediente = producaoIngrediente;
-	}
 
 }

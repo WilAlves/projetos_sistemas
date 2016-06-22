@@ -33,8 +33,8 @@ public class Producao implements Bean {
 	
 
 	@ManyToMany
-	@JoinTable(name= "Ingrediente",joinColumns = {@JoinColumn(name= "ProducaoIngrediente")},
-	inverseJoinColumns = {@JoinColumn(name = "ReceitaIngrediente")})
+	@JoinTable(name= "Producao_Receita",joinColumns = {@JoinColumn(name= "Producao_Id")},
+	inverseJoinColumns = {@JoinColumn(name = "ReceitaID")})
 	private List<Receita> receitas;
 
 

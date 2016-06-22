@@ -18,14 +18,25 @@
 			   		  		<p:outputLabel value="Código" for="id" redered="#{ingredienteMB.ingrediente.id != null}" />
 							<p:inputText id="id" value="#{ingredienteMB.ingrediente.id}" redered="#{ingredienteMB.ingrediente.id != null}" readonly="true" />	   		  	
 							
-							<p:outputLabel value="Produçao" for="producaoIngrediente" redered="#{ingredienteMB.ingrediente.producaoIngrediente != null}" />
-							<p:inputText id="producaoIngrediente" value="#{ingredienteMB.ingrediente.producaoIngrediente}" redered="#{ingredienteMB.ingrediente.producaoIngrediente != null}" />
-							
-							<p:outputLabel value="Receita" for="receitaIngrediente" redered="#{ingredienteMB.ingrediente.receitaIngrediente != null}" />
-							<p:inputText id="receitaIngrediente" value="#{ingredienteMB.ingrediente.receitaIngrediente}" redered="#{ingredienteMB.ingrediente.receitaIngrediente != null}" /> 
-							
-							<p:outputLabel value="Descrição"/><p:inputText value="#{ingredienteMB.ingrediente.ingredientedescricao}" required="true"/>
-				          	<p:outputLabel value="Tipo" /><p:inputText value="#{ingredienteMB.ingrediente.ingredientetipo}" required="true"/>
+							<p:outputLabel value="Descrição"/>
+							<h:selectOneMenu value="#{ingredienteMB.ingrediente.ingredientedescricao}" required="true">
+							<f:selectItem itemValue="Sal"/>
+							<f:selectItem itemValue="Açucar"/>
+							<f:selectItem itemValue="Fermento"/>
+							<f:selectItem itemValue="Leite"/>
+							<f:selectItem itemValue="Trigo"/>
+							<f:selectItem itemValue="Reforçador"/>
+							<f:selectItem itemValue="Bisnaga"/>
+							<f:selectItem itemValue="Chocolate"/>
+							</h:selectOneMenu>
+						
+				          	<p:outputLabel value="Tipo" />
+				          	<h:selectOneMenu value="#{ingredienteMB.ingrediente.ingredientetipo}" required="true">
+							<f:selectItem itemValue="KG"/>
+							<f:selectItem itemValue="LT"/>
+							<f:selectItem itemValue="ML"/>
+							</h:selectOneMenu>
+					
 				          	<p:outputLabel value="Quantidade"/><p:inputText value="#{ingredienteMB.ingrediente.ingredientequantidade}" required="true"/>
 				          	
 				          	<p:commandButton action="#{ingredienteMB.salvar()}" value="Salvar"  update="cadastro lista"/>
@@ -45,9 +56,7 @@
 					<p:column headerText="Descrição"><h:outputText value="#{ingrediente.ingredientedescricao}" /></p:column>
 					<p:column headerText="Tipo"><h:outputText value="#{ingrediente.ingredientetipo}" /></p:column>
 					<p:column headerText="Quantidade"><h:outputText value="#{ingrediente.ingredientequantidade}" /></p:column>
-					<p:column headerText="Receita"><h:outputText value="#{ingrediente.receitaIngrediente}" /></p:column>
-					<p:column headerText="Produção"><h:outputText value="#{ingrediente.producaoIngrediente}" /></p:column> 					
-						<p:column style="width:32px;text-align: center">
+							<p:column style="width:32px;text-align: center">
 							<p:commandButton update="lista" icon="ui-icon-circle-close" title="View" action="#{ingredienteMB.excluir()}">
 								<f:setPropertyActionListener value="#{ingrediente}" target="#{ingredienteMB.ingrediente}" />
 							</p:commandButton>
@@ -57,18 +66,3 @@
 		</ui:define>
 	</ui:decorate>	
 </html>
-
-<!-- 
-						<h:selectOneMenu value="Produçao" for="producaoIngrediente" redered="#{ingredienteMB.ingrediente.producaoIngrediente != null}">
-							<f:selectItem itemValue="" itemLabel="Selecione..." />
-							<f:selectItem itemValue="#{ingrediente.producaoIngrediente}" itemLabel="#{ingrediente.producaoIngrediente}" />
-				
-						</h:selectOneMenu> -->
-
-			
-							
-							
-														<!-- <p:outputLabel value="Produçao" for="producaoIngrediente" redered="#{ingredienteMB.ingrediente.producaoIngrediente != null}" />
-							<p:inputText id="producaoIngrediente" value="#{ingredienteMB.ingrediente.producaoIngrediente}" redered="#{ingredienteMB.ingrediente.producaoIngrediente != null}" />
- -->						 	
-							
