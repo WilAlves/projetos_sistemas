@@ -7,14 +7,26 @@
 	<ui:define name="centro">
 		<h:form id="cadastro">
 			<p:panel header="Formulario de cadastro">
-				<h:panelGrid columns="1">
-					<p:outputLabel value="Código" for="id" redered="#{produtoMB.produto.id != null}" />
+				<h:panelGrid columns="2">
+					<p:outputLabel value="Código:" for="id" redered="#{produtoMB.produto.id != null}" />
 						<p:inputText id="id" value="#{produtoMB.produto.id}" redered="#{produtoMB.produto.id != null}" readonly="true" />
-					<p:outputLabel value="Descrição" />
+					<p:outputLabel value="Descrição:" />
 						<p:inputText value="#{produtoMB.produto.descricao}" required="true" />
-					<p:outputLabel value="Valor Unitario" />
-						<p:inputText value="#{produtoMB.produto.valor}" required="true" />
-					<p:outputLabel value="Quantidade" />
+					<h:outputLabel value="Unidade:" />
+						<h:selectOneMenu id="unidade"
+							value="#{produtoMB.produto.unidade}">
+							<f:selectItem itemValue="" itemLabel="Selecione..." />
+							<f:selectItem itemValue="UN" itemLabel="UN" />
+							<f:selectItem itemValue="KG" itemLabel="KG" />
+							<f:selectItem itemValue="PCT" itemLabel="PCT" />
+							<f:selectItem itemValue="CAIXA" itemLabel="CAIXA" />
+							<f:selectItem itemValue="FARDO" itemLabel="FARDO" />
+						</h:selectOneMenu>
+					<p:outputLabel value="Preço de Compra:" />
+						<p:inputText value="#{produtoMB.produto.preco_compra}" required="true" />
+					<p:outputLabel value="Preço de Venda:" />
+						<p:inputText value="#{produtoMB.produto.preco_venda}" required="true" />
+					<p:outputLabel value="Quantidade:" />
 						<p:inputText value="#{produtoMB.produto.quantidade}" required="true" />
 					<p:commandButton action="#{produtoMB.salvar()}" value="Salvar" update="cadastro lista" />
 				</h:panelGrid>
@@ -27,8 +39,10 @@
 				<p:ajax event="rowSelect" update="cadastro" />
 				<p:column headerText="ID"><h:outputText value="#{plano.id}" /></p:column>
 				<p:column headerText="Descrição"><h:outputText value="#{plano.descricao}" /></p:column>
-				<p:column headerText="Qtde"><h:outputText value="#{plano.quantidade}" /></p:column>
-				<p:column headerText="Valor"><h:outputText value="#{plano.valor}" /></p:column>
+				<p:column headerText="Unidade"><h:outputText value="#{plano.unidade}" /></p:column>
+				<p:column headerText="Qtde em estoque"><h:outputText value="#{plano.quantidade}" /></p:column>
+				<p:column headerText="Valor de compra"><h:outputText value="#{plano.preco_compra}" /></p:column>
+				<p:column headerText="Valor de venda"><h:outputText value="#{plano.preco_venda}" /></p:column>
 				<p:column style="width:32px;text-align: center">
 					<p:commandButton update="lista" icon="ui-icon-circle-close" title="View" action="#{produtoMB.excluir()}" >
 						<f:setPropertyActionListener value="#{plano}" target="#{produtoMB.produto}" />

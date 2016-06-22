@@ -14,7 +14,6 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import br.com.sispan.interfaces.Bean;
-import javax.persistence.ManyToMany;
 
 @Entity
 @Table
@@ -33,14 +32,21 @@ public class Produto implements Bean {
 	@GeneratedValue
 	private Long id;
 	
-	@Column(name = "descricao", nullable = false, length = 255, unique = true)
+	@Column(name = "descricao", nullable = false, length = 255, unique = false)
 	private String descricao="";
 	
-	@Column(name = "valor", precision = 4, nullable = false)
-	private Float valor = 0.0f;
+	@Column(name = "unidade", nullable = false, length = 255, unique = false)
+	private String unidade="";
 	
 	@Column(name = "quantidade", precision = 0, nullable = false)
 	private Integer quantidade = 0;
+	
+	@Column(name = "preco_compra", precision = 4, nullable = false)
+	private Float preco_compra = 0.0f;
+	
+	@Column(name = "preco_venda", precision = 4, nullable = false)
+	private Float preco_venda = 0.0f;
+	
 	
 	
 	@ManyToMany(mappedBy="produtos")
@@ -74,17 +80,30 @@ public class Produto implements Bean {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	public Float getValor() {
-		return valor;
+	public Float getPreco_compra() {
+		return preco_compra;
 	}
-	public void setValor(Float valor) {
-		this.valor = valor;
+	public void setPreco_compra(Float preco_compra) {
+		this.preco_compra = preco_compra;
+	}
+	public Float getPreco_venda() {
+		return preco_venda;
+	}
+	public void setPreco_venda(Float preco_venda) {
+		this.preco_venda = preco_venda;
 	}
 	public Integer getQuantidade() {
 		return quantidade;
 	}
 	public void setQuantidade(Integer quantidade) {
 		this.quantidade = quantidade;
+	}
+
+	public String getUnidade() {
+		return unidade;
+	}
+	public void setUnidade(String unidade) {
+		this.unidade = unidade;
 	}
 	
 	@Override
