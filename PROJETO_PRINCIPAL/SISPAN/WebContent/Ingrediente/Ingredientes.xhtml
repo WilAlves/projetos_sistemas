@@ -20,6 +20,7 @@
 							
 							<p:outputLabel value="Descrição"/>
 							<h:selectOneMenu value="#{ingredienteMB.ingrediente.ingredientedescricao}" required="true">
+							<f:selectItem itemValue="" itemLabel="Selecione..." />
 							<f:selectItem itemValue="Sal"/>
 							<f:selectItem itemValue="Açucar"/>
 							<f:selectItem itemValue="Fermento"/>
@@ -32,6 +33,7 @@
 						
 				          	<p:outputLabel value="Tipo" />
 				          	<h:selectOneMenu value="#{ingredienteMB.ingrediente.ingredientetipo}" required="true">
+							<f:selectItem itemValue="" itemLabel="Selecione..." />
 							<f:selectItem itemValue="KG"/>
 							<f:selectItem itemValue="LT"/>
 							<f:selectItem itemValue="ML"/>

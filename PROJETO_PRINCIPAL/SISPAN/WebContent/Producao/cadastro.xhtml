@@ -12,6 +12,7 @@
 							<p:inputText id="id" value="#{producaoMB.producao.id}" redered="#{producaoMB.producao.id != null}" readonly="true" />	   		  	
 							<p:outputLabel value="Descricão"/>
 							<h:selectOneMenu value="#{producaoMB.producao.produto_descricao}" required="true">
+							<f:selectItem itemValue="" itemLabel="Selecione..." />
 							<f:selectItem itemValue="Pão"/>
 							<f:selectItem itemValue="Bolo"/>
 							<f:selectItem itemValue="Torta"/>
@@ -20,6 +21,7 @@
 							</h:selectOneMenu>
 							<p:outputLabel value="Tipo" />
 							<h:selectOneMenu value="#{producaoMB.producao.produto_tipo}" required="true">
+							<f:selectItem itemValue="" itemLabel="Selecione..." />
 							<f:selectItem itemValue="Doce"/>
 							<f:selectItem itemValue="Francês"/>
 							<f:selectItem itemValue="Massa Fina"/>
@@ -32,8 +34,8 @@
 				          	<p:outputLabel value="Quantidade" /><p:inputText value="#{producaoMB.producao.produto_quantidade}" required="true"/>
 				          	<p:outputLabel value="Status"/>
 				          	<h:selectOneMenu value="#{producaoMB.producao.produto_status}" required="true">
+							<f:selectItem itemValue="" itemLabel="Selecione..." />
 							<f:selectItem itemValue="Produção"/>
-							<f:selectItem itemValue="Fermentando"/>
 							<f:selectItem itemValue="Assando"/>
 							<f:selectItem itemValue="Pronto"/>
 							</h:selectOneMenu>

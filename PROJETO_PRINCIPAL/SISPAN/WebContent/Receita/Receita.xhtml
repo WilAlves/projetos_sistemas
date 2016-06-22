@@ -12,6 +12,7 @@
 							<p:inputText id="id" value="#{receitaMB.receita.id}" redered="#{receitaMB.receita.id != null}" readonly="true" />	   		  	
 							<p:outputLabel value="Descricão"/>
 							<h:selectOneMenu value="#{receitaMB.receita.receitadescricao}" required="true">
+							<f:selectItem itemValue="" itemLabel="Selecione..." />
 							<f:selectItem itemValue="Pão"/>
 							<f:selectItem itemValue="Bolo"/>
 							<f:selectItem itemValue="Torta"/>
@@ -20,6 +21,7 @@
 							</h:selectOneMenu>
 							<p:outputLabel value="Tipo"/>
 							<h:selectOneMenu value="#{receitaMB.receita.receitatipo}" required="true">
+							<f:selectItem itemValue="" itemLabel="Selecione..." />
 							<f:selectItem itemValue="Doce"/>
 							<f:selectItem itemValue="Massa Fina"/>
 							<f:selectItem itemValue="Salgada"/>
