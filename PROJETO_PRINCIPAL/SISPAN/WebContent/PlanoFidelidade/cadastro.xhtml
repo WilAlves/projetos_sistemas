@@ -96,8 +96,16 @@
 									required="true" />
 							</div>
 						</div>
-						<div class="ui-g-12 ui-md-12 ui-lg-12 ">
-							<p:outputLabel value="Meta upgrade" />
+						<div class="ui-g-12 ui-md-12 ui-lg-4 ">
+							<p:outputLabel value="Plano upgrade" />
+						</div>
+						<div class="ui-g-12 ui-md-12 ui-lg-8 ">
+							<p:selectOneMenu id="advanced" value="#{planoFidelidadeMB.planoFidelidade.planoUpgrade}"
+								converter="planoConverter" filter="true"
+								filterMatchMode="contains">
+								<f:selectItems value="#{planoFidelidadeMB.listaPlanos}"
+									var="plano" itemLabel="#{plano.nomePlano}" itemValue="#{plano}" />
+							</p:selectOneMenu>
 						</div>
 						<div class="ui-g-12 ui-md-12 ui-lg-9 ">
 							<p:outputLabel value="Metas alcançadas" />

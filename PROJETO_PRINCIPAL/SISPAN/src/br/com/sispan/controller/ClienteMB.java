@@ -56,12 +56,4 @@ public class ClienteMB extends GenericMB {
 	public void setListaClientes(List<Cliente> listaClientes) {
 		this.listaClientes = listaClientes;
 	}
-
-	@Override
-	public void salvar() {
-		// TODO Auto-generated method stub
-		System.out.println("Plano do cliente: " + cliente.getPlano());
-		super.salvar();
-	}
-
 }

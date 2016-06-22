@@ -44,7 +44,7 @@ public class PlanoFidelidadeMB extends GenericMB {
 
 	@Override
 	public void setLista(List lista) {
-		this.listaPlanos = new ArrayList<PlanoFidelidade>(lista);
+		setListaPlanos(lista);
 	}
 
 	public List<PlanoFidelidade> getListaPlanos() {
@@ -52,9 +52,9 @@ public class PlanoFidelidadeMB extends GenericMB {
 	}
 
 	public void setListaPlanos(List<PlanoFidelidade> listaPlanos) {
+		listaPlanos.remove(planoFidelidade);
 		this.listaPlanos = listaPlanos;
 	}
-	
 
 	public Produto getPremio() {
 		return premio;
@@ -63,9 +63,8 @@ public class PlanoFidelidadeMB extends GenericMB {
 	public void setPremio(Produto premio) {
 		this.premio = premio;
 	}
-	
-	public void excluirPremio(){
-		System.out.println("chamou");
+
+	public void excluirPremio() {
 		planoFidelidade.getListaPremiacoes().remove(premio);
 	}
 
@@ -78,13 +77,21 @@ public class PlanoFidelidadeMB extends GenericMB {
 		}
 		return result;
 	}
-	
+
 	public void onItemSelect(SelectEvent event) {
 		List lista = this.planoFidelidade.getListaPremiacoes();
 		Produto p = (Produto) event.getObject();
-		if(!lista.contains(p)){
+		if (!lista.contains(p)) {
 			lista.add(p);
-		}	 	
-	} 
+		}
+	}
+
+	@Override
+	public void salvar() {
+		System.out.println(planoFidelidade);
+		System.out.println(planoFidelidade.getPlanoUpgrade());
+		super.salvar();
+	}
+	
 	
 }

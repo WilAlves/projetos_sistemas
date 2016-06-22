@@ -14,6 +14,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -54,13 +56,15 @@ public class PlanoFidelidade implements Bean {
 			@JoinColumn(name="id_plano_fidelidade",nullable=false)},
 		inverseJoinColumns={@JoinColumn(name="id_produto",nullable=false)})
 	private List<Produto> listaPremiacoes = new ArrayList<Produto>();
+	@OneToMany(targetEntity = Cliente.class, mappedBy = "plano", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	private List<Cliente>clientes = new ArrayList<Cliente>();
+	@OneToOne(cascade=CascadeType.ALL,optional=true,fetch=FetchType.EAGER,orphanRemoval=false)
+	@JoinColumn(name="id_plano_upgrade",nullable=true)
+	private PlanoFidelidade planoUpgrade;
 	
 	@ManyToOne
 	@JoinColumn(name="id_promocao")
-	private Promocao promocao;
-	
-	@OneToMany(targetEntity = Cliente.class, mappedBy = "plano", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	private List<Cliente>clientes = new ArrayList<Cliente>();
+	private Promocao promocao;	
 	
 	@Transient
 	private boolean downgradable=false;
@@ -167,6 +171,14 @@ public class PlanoFidelidade implements Bean {
 
 	public void setClientes(List<Cliente> clientes) {
 		this.clientes = clientes;
+	}
+		
+	public PlanoFidelidade getPlanoUpgrade() {
+		return planoUpgrade;
+	}
+
+	public void setPlanoUpgrade(PlanoFidelidade planoUpgrade) {
+		this.planoUpgrade = planoUpgrade;
 	}
 
 	@Override
